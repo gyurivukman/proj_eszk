@@ -1,164 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
-<databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-    <changeSet id="00000000000001" author="robi">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="gyuri (generated)" id="1524000419660-1">
         <createTable tableName="comments">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
             </column>
-            <column name="version" type="int(11)">
+            <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="datetime(6)"/>
-            <column name="text" type="varchar(1000)">
+            <column name="text" type="VARCHAR(1000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="recipe_id" type="bigint"/>
-            <column name="user_id" type="bigint"/>
+            <column name="recipe_id" type="INT"/>
+            <column name="user_id" type="INT"/>
         </createTable>
     </changeSet>
-
-    <changeSet id="00000000000002" author="robi">
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="comments"
-                                 constraintName="fk_comments_user_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="users"/>
-
-        <addForeignKeyConstraint baseColumnNames="recipe_id"
-                                 baseTableName="comments"
-                                 constraintName="fk_comments_recipe_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="recipes"/>
-    </changeSet>
-
-    <changeSet id="00000000000003" author="robi">
+    <changeSet author="gyuri (generated)" id="1524000419660-2">
         <createTable tableName="ingredients">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
             </column>
-            <column name="version" type="int(11)">
+            <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
-                <constraints unique="true" nullable="false"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-
-    <changeSet id="00000000000004" author="robi">
+    <changeSet author="gyuri (generated)" id="1524000419660-3">
         <createTable tableName="recipes">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
             </column>
-            <column name="version" type="int(11)">
+            <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="datetime(6)"/>
-            <column name="description" type="varchar(1000)">
-                <constraints unique="true" nullable="false"/>
-            </column>
-            <column name="picture" type="longblob"/>
-            <column name="rating" type="int(11)">
+            <column name="description" type="VARCHAR(1000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="title" type="varchar(255)">
-                <constraints unique="true" nullable="false"/>
+            <column name="picture" type="LONGBLOB"/>
+            <column name="rating" type="INT">
+                <constraints nullable="false"/>
             </column>
-            <column name="user_id" type="bigint"/>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT"/>
         </createTable>
     </changeSet>
-
-    <changeSet id="00000000000005" author="robi">
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="recipes"
-                                 constraintName="fk_recipes_user_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="users"/>
-    </changeSet>
-
-    <changeSet id="00000000000006" author="robi">
+    <changeSet author="gyuri (generated)" id="1524000419660-4">
         <createTable tableName="recipes_ingredients">
-            <column name="ingredient_id" type="bigint">
+            <column name="ingredient_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="recipe_id" type="bigint">
+            <column name="recipe_id" type="INT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-
-    <changeSet id="00000000000007" author="robi">
-        <addForeignKeyConstraint baseColumnNames="ingredient_id"
-                                 baseTableName="recipes_ingredients"
-                                 constraintName="fk_recipes_ingredients_ingredient_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="ingredients"/>
-
-        <addForeignKeyConstraint baseColumnNames="recipe_id"
-                                 baseTableName="recipes_ingredients"
-                                 constraintName="fk_recipes_ingredients_recipe_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="recipes"/>
-    </changeSet>
-
-    <changeSet id="00000000000008" author="robi">
+    <changeSet author="gyuri (generated)" id="1524000419660-5">
         <createTable tableName="steps">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="version" type="int(11)">
+            <column name="step_order" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="step_order" type="int(11)">
+            <column name="text" type="VARCHAR(1000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="text" type="varchar(1000)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="recipe_id" type="bigint"/>
+            <column name="recipe_id" type="INT"/>
         </createTable>
     </changeSet>
-
-    <changeSet id="00000000000009" author="robi">
-        <addForeignKeyConstraint baseColumnNames="recipe_id"
-                                 baseTableName="steps"
-                                 constraintName="fk_steps_recipe_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="recipes"/>
-    </changeSet>
-
-    <changeSet id="00000000000010" author="robi">
+    <changeSet author="gyuri (generated)" id="1524000419660-6">
         <createTable tableName="users">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="version" type="int(11)">
+            <column name="email" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="varchar(100)">
-                <constraints unique="true" nullable="false"/>
-            </column>
-            <column name="fore_name" type="varchar(255)">
+            <column name="fore_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="varchar(255)">
+            <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="salt" type="varchar(255)">
+            <column name="salt" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="sur_name" type="varchar(255)">
+            <column name="sur_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="username" type="varchar(18)">
-                <constraints unique="true" nullable="false"/>
+            <column name="username" type="VARCHAR(18)">
+                <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-7">
+        <addUniqueConstraint columnNames="email" constraintName="UK_6dotkott2kjsp8vw4d0m25fb7" tableName="users"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-8">
+        <addUniqueConstraint columnNames="title" constraintName="UK_i7in1pi28xh54d0s0mx0pphhk" tableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-9">
+        <addUniqueConstraint columnNames="description" constraintName="UK_j0u0nk9puaqyse6judr0pvro6" tableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-10">
+        <addUniqueConstraint columnNames="name" constraintName="UK_j6tsl15xx76y4kv41yxr4uxab" tableName="ingredients"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-11">
+        <addUniqueConstraint columnNames="username" constraintName="UK_r43af9ap4edm43mmtq01oddj6" tableName="users"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-12">
+        <createIndex indexName="FK729dw6qpupm85tlbq57rqbpru" tableName="steps">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-13">
+        <createIndex indexName="FK8omq0tc18jd43bu5tjh6jvraq" tableName="comments">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-14">
+        <createIndex indexName="FKdtb5nfo2c69a6chahuihyaqx" tableName="comments">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-15">
+        <createIndex indexName="FKgv230kq1ahptxm11oinp3s5mr" tableName="recipes_ingredients">
+            <column name="ingredient_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-16">
+        <createIndex indexName="FKiylhkp3ir81fnbv9sjr59rg0y" tableName="recipes_ingredients">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-17">
+        <createIndex indexName="FKlc3x6yty3xsupx80hqbj9ayos" tableName="recipes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-18">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="steps" constraintName="FK729dw6qpupm85tlbq57rqbpru" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-19">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comments" constraintName="FK8omq0tc18jd43bu5tjh6jvraq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-20">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="comments" constraintName="FKdtb5nfo2c69a6chahuihyaqx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-21">
+        <addForeignKeyConstraint baseColumnNames="ingredient_id" baseTableName="recipes_ingredients" constraintName="FKgv230kq1ahptxm11oinp3s5mr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-22">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="recipes_ingredients" constraintName="FKiylhkp3ir81fnbv9sjr59rg0y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredients"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1524000419660-23">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="recipes" constraintName="FKlc3x6yty3xsupx80hqbj9ayos" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>
     </changeSet>
 </databaseChangeLog>
