@@ -42,8 +42,8 @@ public class Recipe extends BaseEntity {
 
     @ManyToMany
     @JoinTable(name="recipes_ingredients",
-            joinColumns=@JoinColumn(name="ingredient_id"),
-            inverseJoinColumns=@JoinColumn(name="recipe_id"))
+            joinColumns=@JoinColumn(name="recipe_id"),
+            inverseJoinColumns=@JoinColumn(name="ingredient_id"))
     private List<Ingredient> ingredients;
 
     @OneToMany(targetEntity = RecipeStep.class, mappedBy="recipe")

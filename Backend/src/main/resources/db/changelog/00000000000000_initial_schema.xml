@@ -161,10 +161,10 @@
         <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="comments" constraintName="FKdtb5nfo2c69a6chahuihyaqx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
     </changeSet>
     <changeSet author="gyuri (generated)" id="1524000419660-21">
-        <addForeignKeyConstraint baseColumnNames="ingredient_id" baseTableName="recipes_ingredients" constraintName="FKgv230kq1ahptxm11oinp3s5mr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+        <addForeignKeyConstraint baseColumnNames="ingredient_id" baseTableName="recipes_ingredients" constraintName="FKiylhkp3ir81fnbv9sjr59rg0y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredients"/>
     </changeSet>
     <changeSet author="gyuri (generated)" id="1524000419660-22">
-        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="recipes_ingredients" constraintName="FKiylhkp3ir81fnbv9sjr59rg0y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredients"/>
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="recipes_ingredients" constraintName="FKgv230kq1ahptxm11oinp3s5mr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
     </changeSet>
     <changeSet author="gyuri (generated)" id="1524000419660-23">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="recipes" constraintName="FKlc3x6yty3xsupx80hqbj9ayos" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>

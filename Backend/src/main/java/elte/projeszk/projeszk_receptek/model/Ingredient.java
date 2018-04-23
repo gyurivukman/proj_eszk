@@ -21,8 +21,8 @@ public class Ingredient extends BaseEntity{
 
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="recipes_ingredients",
-            joinColumns=@JoinColumn(name="recipe_id"),
-            inverseJoinColumns=@JoinColumn(name="ingredient_id ")
+            joinColumns=@JoinColumn(name="ingredient_id"),
+            inverseJoinColumns=@JoinColumn(name="recipe_id")
     )
     private List<Recipe> recipes;
 
