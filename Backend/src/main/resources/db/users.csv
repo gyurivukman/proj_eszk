@@ -1,0 +1,4 @@
+id;version;email;fore_name;password;salt;sur_name;username
+1;1;admin@localhost.com;Administrator;admin;salt;Administrator;admin
+2;1;user@localhost.com;User;user;salt;User;user
+3;1;user2@localhost.com;User2;user2;salt;User;user2
