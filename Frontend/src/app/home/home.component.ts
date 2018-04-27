@@ -9,7 +9,14 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  attemptLogin(loginForm){
+    console.log(loginForm.value)
+  }
+
+  attemptSignup(signupForm){
+    console.log(signupForm.value)
   }
 
 }
