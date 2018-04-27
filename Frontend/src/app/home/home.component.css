@@ -1,0 +1,27 @@
+.bright-green-background{
+    background-color: #32CD32;
+}
+
+.home-menu-shadow{
+    box-shadow: 0px 6px 6px -5px #111
+}
+
+.home-menu-shadow2{
+    box-shadow: 6px 5px 6px -5px #111
+}
+.home-login-input{
+    width:65%;
+    max-width:65%;
+}
+
+.home-menu-border{
+    border-radius: 10px 0px 10px 50px;
+}
+
+.asd{
+    border:1px solid red;
+}
+
+.home-modal-background{
+    background-color:#3CB371;
+}

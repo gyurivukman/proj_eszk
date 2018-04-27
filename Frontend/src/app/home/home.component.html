@@ -1,9 +1,102 @@
-<div class="row h-25 w-100 page-header text-center">
-  <!-- Default dropup button -->
-  <p class="asd">
-    Yet Another Online Recipe and Shopping List
-  </p>
-</div>
-<div class="row h-75">
-  <h2 class="text-right">SAJT</h2>
+<div class="row">
+    <div class="float-left col-lg-1 col-md-1 col sm-2 col-xs-2 bright-green-background home-menu-shadow2 home-menu-border">
+      <span>Place - holder</span>
+    </div>
+    <div class="container-fluid col-lg-11 col-md-11 col sm-10 col-xs-10">
+      <div class="row bright-green-background home-menu-shadow justify-content-end">
+          <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#registerModal">
+            Register
+          </button>
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#loginModal">
+            Login
+          </button>
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content home-modal-background">
+                <div class="modal-header mx-auto">
+                  <h5 class="modal-title" id="loginModalLabel">Log in</h5>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="usernameLoginInput">Username</label>
+                      <input type="text" class="form-control" id="usernameLoginInput" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                      <label for="passwordLoginInput">Password</label>
+                      <input type="password" class="form-control" id="passwordLoginInput" aria-describedby="passwordHelp" placeholder="Enter password">
+                      <small id="passwordHelp" class="form-text text-danger">Don't share your password with anyone!</small>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="rememberMe">
+                      <label class="form-check-label" for="rememberMe">Remember Me!</label>
+                      <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <small class="form-text text-muted">Copyright lófasz</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content home-modal-background">
+                  <div class="modal-header mx-auto">
+                    <h5 class="modal-title" id="registerModalLabel">Sign up!</h5>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group float-left w-50">
+                        <label for="firstnameRegisterInput">First name</label>
+                        <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstname">
+                      </div>
+                      <div class="form-group float-right w-50">
+                        <label for="surnameRegisterInput">Last name</label>
+                        <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastname">
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="form-group float-left w-50">
+                        <label for="usernameRegisterInput">Username</label>
+                        <input type="text" class="form-control" id="usernameRegisterInput" placeholder="Enter username" name="username">
+                        <small class="form-text text-muted">Mindenféle username szabályok</small>
+                      </div>
+                      <div class="form-group float-right w-50">
+                        <label for="passwordRegisterInput">Password</label>
+                        <input type="password" class="form-control" id="passwordRegisterInput" aria-describedby="passwordHelp" placeholder="Enter password" name="password">
+                        <small class="form-text text-muted">Mindenféle password szabályok</small>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="form-group">
+                        <label for="emailRegisterInput">Email</label>
+                        <input type="email" class="form-control" id="emailRegisterInput" placeholder="Enter email" name="email">
+                      </div>
+                      <!-- TODO : Form invalid if the terms havent been accepted/other fields are not correctly filled out.-->
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="acceptTerms">
+                        <label class="form-check-label" for="acceptTerms">I have read and accepted the terms of use.</label>
+                        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary float-right">Sign up!</button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- <div class="modal-footer">
+                  </div> -->
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="row justify-content-center">
+          <nav class="nav">
+              <a class="nav-link active" href="#">Reggeli</a>
+              <a class="nav-link" href="#">Ebéd</a>
+              <a class="nav-link" href="#">Uzsonna</a>
+              <a class="nav-link" href="#">Vacsora</a>
+              <a class="nav-link" href="#">Fitt</a>
+              <a class="nav-link" href="#"></a>
+            </nav>
+      </div>
+    </div>
 </div>

@@ -55,6 +55,7 @@ liquibase{
 			referencePassword 'root'
 		}
 	}
+
 	runList = project.ext.runList
 }
 def buildTimestamp() {
