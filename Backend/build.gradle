@@ -38,11 +38,27 @@ dependencies {
 
 liquibase{
 	activities{
-		main{
-			changeLogFile 'src/java/main/resources/db/master.xml'
+		migrate {
+			changeLogFile 'src/main/resources/db/master.xml'
 			url 'jdbc:mysql://localhost:3306/proj_eszk'
 			username 'root'
 			password 'root'
 		}
+
+		generateDiffLog {
+			changeLogFile 'src/main/resources/db/changelog/'+this.buildTimestamp()+'.xml'
+			url 'jdbc:mysql://localhost:3306/proj_eszk'
+			username 'root'
+			password 'root'
+			referenceUrl 'jdbc:mysql://localhost:3306/dev'
+			referenceUsername 'root'
+			referencePassword 'root'
+		}
 	}
+	runList = project.ext.runList
+}
+def buildTimestamp() {
+	def date = new Date()
+	def formattedDate = date.format('yyyyMMddHHmmss')
+	return formattedDate
 }
