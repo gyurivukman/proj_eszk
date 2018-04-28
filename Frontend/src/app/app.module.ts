@@ -5,17 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
-import { RecipeComponent } from './recipe/recipe.component';
-import {AppRoutingModule} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { FeaturedRecipesSliderComponent } from './featured-recipes-slider/featured-recipes-slider.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component'
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ShopComponent,
-    RecipeComponent,
     FeaturedRecipesSliderComponent,
+    RecipeCardComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
