@@ -31,12 +31,12 @@
                       <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" ngModel #rememberMe="ngModel">
                       <label class="form-check-label" for="rememberMe">Remember Me!</label>
                       <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary float-right" [disabled]="!loginForm.form.valid">Submit</button>
+                    <button type="submit" class="btn btn-success float-right" [disabled]="!loginForm.form.valid">Submit</button>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <small class="form-text text-muted">Copyright lófasz</small>
+                  <small class="form-text text-muted">Copyright things</small>
                 </div>
               </div>
             </div>
@@ -99,4 +99,7 @@
             </nav>
       </div>
     </div>
+</div>
+<div class="row justify-content-center">
+  <app-featured-recipes-slider></app-featured-recipes-slider>
 </div>

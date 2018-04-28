@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  attemptLogin(loginForm){
-    console.log(loginForm.value)
+  attemptLogin(loginForm:FormGroup){
+    console.log(loginForm)
   }
 
-  attemptSignup(signupForm){
+  attemptSignup(signupForm:FormGroup){
     console.log(signupForm.value)
   }
 
