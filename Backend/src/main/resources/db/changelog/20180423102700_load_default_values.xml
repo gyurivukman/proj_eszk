@@ -2,37 +2,37 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <changeSet author="robi" id="1524473716837-1">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/users.csv"
+                  file="db/demo_fixtures/users.csv"
                   separator=";"
                   tableName="users"/>
     </changeSet>
     <changeSet author="robi" id="1524473716837-2">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/recipes.csv"
+                  file="db/demo_fixtures/recipes.csv"
                   separator=";"
                   tableName="recipes"/>
     </changeSet>
     <changeSet author="robi" id="1524473716837-3">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/comments.csv"
+                  file="db/demo_fixtures/comments.csv"
                   separator=";"
                   tableName="comments"/>
     </changeSet>
     <changeSet author="robi" id="1524473716837-4">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/ingredients.csv"
+                  file="db/demo_fixtures/ingredients.csv"
                   separator=";"
                   tableName="ingredients"/>
     </changeSet>
     <changeSet author="robi" id="1524473716837-5">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/steps.csv"
+                  file="db/demo_fixtures/steps.csv"
                   separator=";"
                   tableName="steps"/>
     </changeSet>
     <changeSet author="robi" id="1524473716838-6">
         <loadData encoding="UTF-8"
-                  file="src/main/resources/db/demo_fixtures/recipes_ingredients.csv"
+                  file="db/demo_fixtures/recipes_ingredients.csv"
                   separator=";"
                   tableName="recipes_ingredients"/>
     </changeSet>
