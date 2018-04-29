@@ -103,3 +103,9 @@
 <div class="row justify-content-center">
   <app-featured-recipes-slider></app-featured-recipes-slider>
 </div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-lg-3 recipe-card" *ngFor="let card of dummyCards">
+    <app-recipe-card [card]="card"></app-recipe-card>
+  </div>
+</div>
