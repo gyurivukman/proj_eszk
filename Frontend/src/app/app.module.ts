@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FeaturedRecipesSliderComponent } from './featured-recipes-slider/featured-recipes-slider.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component'
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     ShopComponent,
     FeaturedRecipesSliderComponent,
     RecipeCardComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    LoginComponent,
+    SignupComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,

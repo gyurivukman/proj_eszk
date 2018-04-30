@@ -1,107 +1,83 @@
 <div class="row">
-    <div class="float-left col-lg-1 col-md-1 col sm-2 col-xs-2 bright-green-background home-menu-shadow2 home-menu-border">
-      <span>Place - holder</span>
+    <div class="float-left col-lg-1 col-md-1 col sm-2 col-xs-2 bright-green-background home-menu-shadow2 home-menu-border justify-content-center">
+      <img class="img-fluid mx-auto" src="./assets/home-icon.png" alt="First slide">
     </div>
+
     <div class="container-fluid col-lg-11 col-md-11 col sm-10 col-xs-10">
       <div class="row bright-green-background home-menu-shadow justify-content-end">
-          <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#registerModal">
-            Register
-          </button>
-          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#loginModal">
+        <div class="w-75">
+          <span class="align-middle lemonada">Yet Another Online Shopping and Recipe List!</span>
+        </div>
+        <div class="w-25">
+          <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#loginModal">
             Login
           </button>
-          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content home-modal-background">
-                <div class="modal-header mx-auto">
-                  <h5 class="modal-title" id="loginModalLabel">Log in</h5>
-                </div>
-                <div class="modal-body">
-                  <form #loginForm="ngForm" (ngSubmit)="attemptLogin(loginForm.form)">
-                    <div class="form-group">
-                      <label for="usernameLoginInput">Username</label>
-                      <input type="text" class="form-control" id="usernameLoginInput" placeholder="Enter username" required name="username" ngModel #username="ngModel">
-                    </div>
-                    <div class="form-group">
-                      <label for="passwordLoginInput">Password</label>
-                      <input type="password" class="form-control" id="passwordLoginInput" aria-describedby="passwordHelp" placeholder="Enter password" required name="password" ngModel #password="ngModel">
-                      <small id="passwordHelp" class="form-text text-danger">Don't share your password with anyone!</small>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" ngModel #rememberMe="ngModel">
-                      <label class="form-check-label" for="rememberMe">Remember Me!</label>
-                      <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success float-right" [disabled]="!loginForm.form.valid">Submit</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <small class="form-text text-muted">Copyright things</small>
-                </div>
+          <button type="button" class="btn btn-link btn-sm float-right" data-toggle="modal" data-target="#registerModal">
+            Register
+          </button>
+        </div>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content home-modal-background">
+              <div class="modal-header mx-auto w-100">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <div class="modal-body">
+                <app-login></app-login>
+              </div>
+              <!-- <div class="modal-footer">
+                <small class="form-text text-muted">Copyright things</small>
+              </div> -->
             </div>
           </div>
-          <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content home-modal-background">
-                  <div class="modal-header mx-auto">
-                    <h5 class="modal-title" id="registerModalLabel">Sign up!</h5>
-                  </div>
-                  <div class="modal-body">
-                    <form #signupForm="ngForm" (ngSubmit)="attemptSignup(signupForm.form)">
-                      <div class="form-group float-left w-50">
-                        <label for="firstnameRegisterInput">First name</label>
-                        <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstname" required ngModel #firstname="ngModel">
-                      </div>
-                      <div class="form-group float-right w-50">
-                        <label for="surnameRegisterInput">Last name</label>
-                        <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastname" required ngModel #lastname="ngModel">
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="form-group float-left w-50">
-                        <label for="usernameRegisterInput">Username</label>
-                        <input type="text" class="form-control" id="usernameRegisterInput" placeholder="Enter username" name="username" required ngModel #username="ngModel">
-                        <small class="form-text text-muted">Mindenféle username szabályok</small>
-                      </div>
-                      <div class="form-group float-right w-50">
-                        <label for="passwordRegisterInput">Password</label>
-                        <input type="password" class="form-control" id="passwordRegisterInput" aria-describedby="passwordHelp" placeholder="Enter password" name="password" required ngModel #password="ngModel">
-                        <small class="form-text text-muted">Mindenféle password szabályok</small>
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="form-group">
-                        <label for="emailRegisterInput">Email</label>
-                        <input type="email" class="form-control" id="emailRegisterInput" placeholder="Enter email" name="email" required ngModel #email="ngModel">
-                      </div>
-                      <!-- TODO : Form invalid if the terms havent been accepted/other fields are not correctly filled out.-->
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I have read and accepted the terms of use.</label>
-                        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success float-right" [disabled]="!signupForm.form.valid">Sign up!</button>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- <div class="modal-footer">
-                  </div> -->
-                </div>
+        </div>
+
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header mx-auto w-100">
+                <h5 class="modal-title" id="registerModalLabel">Sign up</h5>
+                  <button type="button" class="close float-right" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <!-- <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button> -->
               </div>
+              <div class="modal-body">
+                <app-signup></app-signup>
+              </div>
+              <!-- <div class="modal-footer">
+              </div> -->
             </div>
+          </div>
+        </div>
+
       </div>
+
       <div class="row justify-content-center">
           <nav class="nav">
-              <a class="nav-link active" href="#">Reggeli</a>
-              <a class="nav-link" href="#">Ebéd</a>
-              <a class="nav-link" href="#">Uzsonna</a>
-              <a class="nav-link" href="#">Vacsora</a>
-              <a class="nav-link" href="#">Fitt</a>
-              <a class="nav-link" href="#"></a>
-            </nav>
+            <a class="nav-link active" href="#">Breakfast</a>
+            <a class="nav-link" href="#">Snack</a>
+            <a class="nav-link" href="#">Lunch</a>
+            <a class="nav-link" href="#">Dinner</a>
+            <a class="nav-link" href="#">Healthy</a>
+            <a class="nav-link" href="#">Cookies</a>
+            <a class="nav-link" href="#">Occasions</a>
+          </nav>
       </div>
     </div>
 </div>
-<div class="row justify-content-center">
-  <app-featured-recipes-slider></app-featured-recipes-slider>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 float-left h-100">
+      <app-featured-recipes-slider></app-featured-recipes-slider>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 float-right h-100">
+    <app-fridge></app-fridge>
+  </div>
+  
 </div>
 
 <div class="row">
