@@ -1,10 +1,10 @@
-<div id="featured-recipes" class="carousel slide" data-ride="carousel">
+<div class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li *ngFor="let item of data;index as i;" data-target="#featured-recipes" [attr.data-slide-to]=i></li>
   </ol>
   <div class="carousel-inner">
     <div *ngFor="let item of data;first as isFirst" class="carousel-item" [class.active]="isFirst">
-      <img class="d-block w-100 img-fluid" src="{{item.image}}" alt="featured_recipe_image">
+      <img class="d-block img-fluid w-100" src="{{item.image}}" alt="featured_recipe_image">
       <div class="carousel-caption d-none d-md-block">
         <h5>{{item.title}}</h5>
         <p>{{item.description}}</p>

@@ -12,6 +12,8 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { FridgeComponent } from './fridge/fridge.component';
     RecipeDetailComponent,
     LoginComponent,
     SignupComponent,
-    FridgeComponent
+    FridgeComponent,
+    RecipesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     FormsModule
   ],
   providers: [],

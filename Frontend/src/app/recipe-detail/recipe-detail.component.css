@@ -1,0 +1,60 @@
+.recipe-details-image-rounded{
+    border:1px solid #3CB371;
+    border-radius:5px;
+}
+.recipe-details-metadata{
+    list-style-type:none;
+}
+.lemonada{
+    font-family: 'Lemonada', sans-serif;
+}
+
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
+.asd{
+    border:1px solid red;
+}
+
+.recipe-title{
+    font-size:2.0em;
+}
+
+.text-decoration-container {
+    overflow: hidden;
+    text-align: center;
+}
+
+.text-decoration-container h3 {
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+  }
+  
+.text-decoration-container h3:before,.text-decoration-container h3:after {
+    background: #000;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+      top: 50%;
+    width: 400%;
+}
+
+.text-decoration-container h3:before {
+    right: 100%;
+}
+
+.text-decoration-container h3:after {
+    left: 100%;
+}
+
+
+
+.tag{
+    padding:3px;
+    margin:5px;
+    border-radius:3px;
+    color:#FFF;
+}

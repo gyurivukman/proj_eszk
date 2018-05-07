@@ -1,3 +1,62 @@
-<p>
-  recipe works!
-</p>
+<div class="row mt-1">
+  <div class="col-12 text-center">
+    <h1 class="lemonada recipe-title">{{recipeData.name}}</h1>
+    <img src={{recipeData.imgPath}} class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
+    <div class="text-decoration-container mt-3"><h3 class="roboto">Rating: {{recipeData.rating}}</h3></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <span class="tag d-inline-block bg-primary mt-1" *ngFor="let tag of recipeData.tags" href="#">{{tag}} </span>
+  </div>
+  <div class="col-6 text-right">
+    <ul class="recipe-details-metadata">
+      <li class="my-2">
+        <img class="recipe-details-user-avatar mr-3" src={{recipeData.creator.avatar}} alt="user avatar" height="35" width="35">
+        <span class="font-weight-bold roboto">{{recipeData.creator.username}}</span>
+      </li>
+      <li>
+        <span class="roboto">{{recipeData.createdAt|date:'yyyy-MM-dd'}}</span>
+      </li>
+      <li>
+        <span class="font-weight-bold">Difficulty: </span>
+        <span class="roboto">{{recipeData.difficulty}}</span>
+      </li>
+      <li>
+        <span class="font-weight-bold">Ready in: </span>
+        <span class="roboto">{{recipeData.readyIn}} mins</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-justify">
+    <h3 class="roboto font-weight-bold">Story:</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque amet assumenda nemo. Voluptatum quis eaque odit ut itaque magni repellendus a, autem reprehenderit! Quidem laborum dolores harum vero hic sapiente.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque amet assumenda nemo. Voluptatum quis eaque odit ut itaque magni repellendus a, autem reprehenderit! Quidem laborum dolores harum vero hic sapiente.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque amet assumenda nemo. Voluptatum quis eaque odit ut itaque magni repellendus a, autem reprehenderit! Quidem laborum dolores harum vero hic sapiente.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    INGREDIENTS
+  </div>
+  <div class="col-6 text-right">
+    STEPS
+  </div>
+</div>
+<div clas="row">
+  <div class="col-12 text-center">
+    COMMENT
+  </div>
+  <div class="col-12 text-center">
+      COMMENT
+    </div>
+    <div class="col-12 text-center">
+        COMMENT
+      </div>
+      <div class="col-12 text-center">
+          COMMENT
+        </div>
+        
+</div>
