@@ -16,19 +16,19 @@ export class FeaturedRecipesSliderComponent implements OnInit {
       image:"http://placekitten.com/800/400"
     },
     {
-      id:1,
+      id:2,
       title:"title_2",
       description:"desc_2",
       image:"http://placekitten.com/800/400"
     },
     {
-      id:1,
+      id:3,
       title:"title_3",
       description:"desc_3",
       image:"http://placekitten.com/800/400"
     },
     {
-      id:1,
+      id:4,
       title:"title_4",
       description:"desc_4",
       image:"http://placekitten.com/800/400"
