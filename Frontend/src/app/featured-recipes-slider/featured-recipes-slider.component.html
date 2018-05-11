@@ -4,7 +4,7 @@
   </ol>
   <div class="carousel-inner">
     <div *ngFor="let item of data; first as isFirst" class="carousel-item" [class.active]="isFirst">
-      <a [routerLink]=item.id><img class="d-block img-fluid w-100" src="{{item.image}}" alt="featured_recipe_image"></a>
+      <a [routerLink]=item.id><img class="d-block img-fluid" src="{{item.image}}" alt="featured_recipe_image"></a>
       <div class="carousel-caption d-none d-md-block">
         <h5>{{item.title}}</h5>
         <p>{{item.description}}</p>
