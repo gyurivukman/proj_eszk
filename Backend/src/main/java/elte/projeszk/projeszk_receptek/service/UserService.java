@@ -38,7 +38,7 @@ public class UserService {
         if (optional.isPresent()) {
                 try {
                     User user = optional.get();
-                    if (validatePassword(password, user.getPassword() + user.getSalt())) {
+                    if (validatePassword(password, user.getPassword())) {
                         return Jwts.builder()
                                 .setSubject(user.getUsername())
                                 .claim("id", user.getId())
@@ -77,7 +77,7 @@ public class UserService {
         if (validUsername(username) && validName(firstName) && validName(lastName) && validPassword(password) && validEmail(email) && tos) {
             try {
                 String salt = generateStrongPasswordHash(username);
-                User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password) + salt, salt, null, null, null);
+                User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password), salt, null, null, null);
                 userRepository.save(user);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 System.out.printf("Error message: %s%n", e.getMessage());

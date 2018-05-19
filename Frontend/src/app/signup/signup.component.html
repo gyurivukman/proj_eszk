@@ -11,12 +11,12 @@
         <form #signupForm="ngForm" (ngSubmit)="attemptSignup(signupForm.form)">
           <div class="form-group float-left signup-inline-input">
             <label for="firstnameRegisterInput">First name</label>
-            <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstname" required ngModel #firstname="ngModel">
+            <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstName" required ngModel #firstName="ngModel">
             <small *ngIf="errors && errors.firstName" class="form-text text-danger">{{errors.firstName}}</small>
           </div>
           <div class="form-group float-right signup-inline-input">
             <label for="surnameRegisterInput">Last name</label>
-            <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastname" required ngModel #lastname="ngModel">
+            <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastName" required ngModel #lastName="ngModel">
             <small *ngIf="errors && errors.lastName" class="form-text text-danger">{{errors.lastName}}</small>
           </div>
           <div class="form-group float-left signup-inline-input">
