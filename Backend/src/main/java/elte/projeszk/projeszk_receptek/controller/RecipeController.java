@@ -19,7 +19,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping(value = "/{id}/picture", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/picture", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getPicture(@PathVariable Integer id) {
         byte[] picture = recipeService.getPicture(id);
         if (picture != null)

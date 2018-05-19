@@ -44,7 +44,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(map);
     }
 
-    @RequestMapping(value = "/{id}/avatar", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/avatar", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getAvatar(@PathVariable Integer id) {
         byte[] avatar = userService.getAvatar(id);
         if (avatar != null)

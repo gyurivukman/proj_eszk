@@ -20,11 +20,6 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
     
   }
 
-  /* public id?:number;
-    public user:User;
-    public created_at:Date;
-    public order:number;
-    public text:string; */
   addComment(){
     this.commentData.push(
       {
@@ -47,7 +42,6 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           id:Number(params['recipeid']),
           name:"Szuper Duper Palacsinta Deluxe",
           description:"Lent voltunk vidéken aztán ez volt.The end.",
-          imgPath:"https://www.biggerbolderbaking.com/wp-content/uploads/2016/03/BBB117-Carrot-Cake-Pancakes-Thumbnail-FINAL-1024x576.jpg",
           ingredients:[
             {name:'Szuper', quantity:'9001'},
             {name:'Duper', quantity:'15 dkg'},

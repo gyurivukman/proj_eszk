@@ -1,7 +1,7 @@
 <div class="row mt-1">
   <div class="col-12 text-center">
     <h1 class="lemonada recipe-title">{{recipeData.name}}</h1>
-    <img src={{recipeData.imgPath}} class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
+    <img src="http://localhost:8080/api/recipe/{{recipeData.id}}/picture" class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
     <div class="text-decoration-container mt-3"><h2 class="roboto">Rating: {{recipeData.rating}}</h2></div>
   </div>
 </div>
