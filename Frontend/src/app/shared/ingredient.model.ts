@@ -1,4 +1,4 @@
-export class Ingredient {
-  public name: string;
-  public quantity: string;
+export interface Ingredient {
+  name: string;
+  quantity: string;
 }

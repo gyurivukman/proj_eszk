@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Recipe } from '../shared/recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { Comment } from '../shared/comment.model'
 
 @Component({
   selector: 'app-recipe',
@@ -13,26 +14,32 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
 
   activatedRouteSub:Subscription;
   recipeData:Recipe;
-  commentData:any[];
+  commentData:Comment[];
   userComment:string;
   constructor(private route:ActivatedRoute) {
     
   }
 
+  /* public id?:number;
+    public user:User;
+    public creation_time:Date;
+    public order:number;
+    public text:string; */
   addComment(){
     this.commentData.push(
       {
-        creator:"LOGGED_IN_USER",
-        avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
-        date:new Date().toLocaleDateString(),
+        user:{
+              username:"LOGGED_IN_USER", 
+              avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
+            },
+        creation_time:new Date().toLocaleDateString(),
+        order:this.commentData[this.commentData.length-1].order+1,
         text:this.userComment.trim()
       }
     )
     this.userComment="";
   }
-  setUserComment(event:Event){
-    console.log(event);
-  }
+
   ngOnInit() {
     this.activatedRouteSub=this.route.params.subscribe(
       (params)=>{
@@ -78,19 +85,30 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           tags:["tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tasdasdasdasdasdasasasdag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2"]
         }
         this.commentData = [{
-          creator:"CREATOR_1",
-          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
-          date:"2018-05-20",
+          user:{
+            username:"CREATOR_1", 
+            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
+          },
+          creation_time:"2018-05-20",
+          order:1,
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         },{
-          creator:"CREATOR_2",
-          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
-          date:"2018-05-21",
+          user:{
+            username:"CREATOR_2", 
+            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
+          },
+         
+          order:2,
+          creation_time:"2018-05-21",
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         },{
-          creator:"CREATOR_3",
-          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
-          date:"2018-05-22",
+          user:{
+            username:"CREATOR_1", 
+            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
+          },
+          
+          order:3,
+          creation_time:"2018-05-22",
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         }]
       }

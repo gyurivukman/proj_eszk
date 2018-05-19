@@ -1,8 +1,9 @@
 import { User } from "./user.model";
 
-export class Comment{
-    public id:number;
-    public user:User;
-    public creation_time:Date;
-    public text:string;
+export interface Comment{
+    id?:number;
+    user:User;
+    creation_time:String;
+    order:number;
+    text:string;
 }

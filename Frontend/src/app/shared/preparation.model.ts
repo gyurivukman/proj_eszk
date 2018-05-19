@@ -1,4 +1,4 @@
-export class Preparation {
-  public step: number;
-  public description: string;
+export interface Preparation {
+  step: number;
+  description: string;
 }

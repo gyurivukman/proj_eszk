@@ -1,5 +1,5 @@
-export class RecipeCard{
-    public imgUrl:string;
-    public title:string;
-    public text:string;
+export interface RecipeCard{
+    imgUrl:string;
+    title:string;
+    text:string;
 }
