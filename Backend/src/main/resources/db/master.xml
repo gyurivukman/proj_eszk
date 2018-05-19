@@ -6,5 +6,6 @@
 
     <include file="changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="true"/>
 	<include file="changelog/20180519134342.xml" relativeToChangelogFile="true"/>
+	<include file="changelog/20180519235158.xml" relativeToChangelogFile="true"/>
 	<!--<include file="changelog/20180423102700_load_default_values.xml" relativeToChangelogFile="true"/> -->
 </databaseChangeLog>

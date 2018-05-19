@@ -79,8 +79,7 @@ public class UserService {
         }
         if (map.isEmpty()) {
             try {
-                String salt = generateStrongPasswordHash(username);
-                User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password), salt, null, null, null);
+                User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password), null, null, null);
                 userRepository.save(user);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 System.out.printf("Error message: %s%n", e.getMessage());

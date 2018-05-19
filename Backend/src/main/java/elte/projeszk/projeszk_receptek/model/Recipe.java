@@ -32,10 +32,6 @@ public class Recipe extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @Min(1)@Max(5)
-    @Column(nullable=false)
-    private int rating=5;
-
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name="user_id", referencedColumnName="id")
     private User user;
@@ -55,4 +51,9 @@ public class Recipe extends BaseEntity {
     @Column(nullable=true)
     private int downvotes;
 
+    @ManyToMany
+    @JoinTable(name="recipes_tags",
+            joinColumns=@JoinColumn(name="tag_id"),
+            inverseJoinColumns=@JoinColumn(name="recipe_id"))
+    private List<Tag> tags;
 }
