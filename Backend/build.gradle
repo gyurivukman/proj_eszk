@@ -65,8 +65,12 @@ liquibase{
 			referencePassword props.getProperty('liquibase.referencedb.password')
 		}
 	}
+	if(!project.hasProperty('runList')){
+		runList = "migrate"
+	}else{
+		runList = project.ext.runList
+	}
 
-	runList = project.ext.runList
 }
 def buildTimestamp() {
 	def date = new Date()
