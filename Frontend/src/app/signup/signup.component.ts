@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
       }
     ).catch(
       (res)=>{
+        console.log("elbaszódott")
+        console.log(res.json())
         let errors = res.json()
         for(let key in this.errors){
           if(errors.hasOwnProperty(key)){

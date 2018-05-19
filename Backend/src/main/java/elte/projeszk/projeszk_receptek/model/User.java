@@ -10,7 +10,7 @@ import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",uniqueConstraints={@UniqueConstraint(columnNames={"username","email"})})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,9 +33,6 @@ public class User extends BaseEntity {
     //proposal: use a one-way algorithm like PBKDF2 + salt it with some unique hash.
     @Column(nullable=false)
     private String password;
-
-    @Column(nullable=false)
-    private String salt;
 
     @OneToMany(mappedBy="user", targetEntity = Recipe.class, fetch = FetchType.LAZY)
     private List<Recipe> recipes;

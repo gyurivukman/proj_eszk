@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
     let token = localStorage.getItem("token");
     return token != null && !this.jwthelper.isTokenExpired(token);
   }
+
+  logout(){
+    localStorage.removeItem("token");
+  }
 }

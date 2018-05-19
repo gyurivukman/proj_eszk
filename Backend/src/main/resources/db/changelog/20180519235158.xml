@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="gyuri (generated)" id="1526766720326-1">
+        <createTable tableName="featured_recipes">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipe_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-2">
+        <createTable tableName="recipes_tags">
+            <column name="recipe_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-3">
+        <createTable tableName="tags">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-4">
+        <createTable tableName="votes">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_liked" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipe_id" type="INT"/>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-5">
+        <addUniqueConstraint columnNames="recipe_id" constraintName="UK1a0a1sf27xuywjkmrf7wq0w7x" tableName="featured_recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-6">
+        <addUniqueConstraint columnNames="username, email" constraintName="UKfnranlqhubvw04boopn028e6" tableName="users"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-7">
+        <addUniqueConstraint columnNames="recipe_id, user_id" constraintName="UKh93pwvn1g69wnbjhi92x2u712" tableName="votes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-8">
+        <createIndex indexName="FKgu1b7y5a6f6yhigapn4ifibi1" tableName="recipes_tags">
+            <column name="tag_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-9">
+        <createIndex indexName="FKli4uj3ic2vypf5pialchj925e" tableName="votes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-10">
+        <createIndex indexName="FKomr08sjdrw7ocogwrvk5g18s0" tableName="recipes_tags">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-11">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="recipes_tags" constraintName="FKgu1b7y5a6f6yhigapn4ifibi1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-12">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="featured_recipes" constraintName="FKj85p8tdvj2vf85j0h1n7ty9da" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-13">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes" constraintName="FKli4uj3ic2vypf5pialchj925e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-14">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="recipes_tags" constraintName="FKomr08sjdrw7ocogwrvk5g18s0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tags"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-15">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="votes" constraintName="FKtbs8lm0qq3g8clhlhg49k9d3g" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-16">
+        <dropColumn columnName="rating" tableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526766720326-17">
+        <dropColumn columnName="salt" tableName="users"/>
+    </changeSet>
+</databaseChangeLog>
