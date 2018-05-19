@@ -1,19 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { SignupService } from './signup.service';
+import { SignUpData } from '../shared/signup-data.model';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-signup-modal',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-  constructor() { }
+  errors:SignUpData
+  @ViewChild('closeSignup') closeSignup: ElementRef;
+  constructor(private signupservice:SignupService) {}
+  
 
   ngOnInit() {
   }
 
   attemptSignup(formGroup:FormGroup){
-    console.log(formGroup);
+    this.signupservice.attemptSignup(formGroup.value).then(
+      (res)=>{
+        console.log("OK")
+        console.log(res)
+        this.closeSignup.nativeElement.click();
+      }
+    ).catch(
+      (res)=>{
+        let errors = res.json()
+        for(let key in this.errors){
+          if(errors.hasOwnProperty(key)){
+            this.errors[key]=errors[key];
+          }
+        }
+      }
+    )
   }
 }

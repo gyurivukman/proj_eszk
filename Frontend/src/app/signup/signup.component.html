@@ -1,34 +1,50 @@
-<form #signupForm="ngForm" (ngSubmit)="attemptSignup(signupForm.form)">
-    <div class="form-group float-left signup-inline-input">
-      <label for="firstnameRegisterInput">First name</label>
-      <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstname" required ngModel #firstname="ngModel">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto w-100">
+        <h5 class="modal-title" id="registerModalLabel">Sign up</h5>
+        <button type="button" class="close float-right" aria-label="Close" data-dismiss="modal" #closeSignup>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #signupForm="ngForm" (ngSubmit)="attemptSignup(signupForm.form)">
+          <div class="form-group float-left signup-inline-input">
+            <label for="firstnameRegisterInput">First name</label>
+            <input type="text" class="form-control" id="firstnameRegisterInput" placeholder="Enter your firstname" name="firstname" required ngModel #firstname="ngModel">
+            <small *ngIf="errors && errors.firstName" class="form-text text-danger">{{errors.firstName}}</small>
+          </div>
+          <div class="form-group float-right signup-inline-input">
+            <label for="surnameRegisterInput">Last name</label>
+            <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastname" required ngModel #lastname="ngModel">
+            <small *ngIf="errors && errors.lastName" class="form-text text-danger">{{errors.lastName}}</small>
+          </div>
+          <div class="form-group float-left signup-inline-input">
+            <label for="usernameRegisterInput">Username</label>
+            <input type="text" class="form-control" id="usernameRegisterInput" placeholder="Enter username" name="username" required ngModel #username="ngModel">
+            <small *ngIf="errors && errors.userName" class="form-text text-danger">{{errors.userName}}</small>
+          </div>
+          <div class="form-group float-right signup-inline-input">
+            <label for="passwordRegisterInput">Password</label>
+            <input type="password" class="form-control" id="passwordRegisterInput" aria-describedby="passwordHelp" placeholder="Enter password" name="password" required ngModel #password="ngModel">
+            <small *ngIf="errors && errors.password" class="form-text text-danger">{{errors.password}}</small>
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group">
+            <label for="emailRegisterInput">Email</label>
+            <input type="email" class="form-control" id="emailRegisterInput" placeholder="Enter email" name="email" required ngModel #email="ngModel">
+            <small *ngIf="errors && errors.email" class="form-text text-danger">{{errors.email}}</small>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="acceptTerms" name="tos" ngModel #tos="ngModel" required> 
+            <label class="form-check-label" for="acceptTerms">I have read and accepted the terms of use.</label>
+            <small *ngIf="errors && errors.tos" class="form-text text-danger">{{errors.tos}}</small>
+          </div>
+          <button type="submit" class="btn btn-success float-right signup-submit-button" [disabled]="!signupForm.form.valid">Sign up!</button>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+      </div> -->
     </div>
-    <div class="form-group float-right signup-inline-input">
-      <label for="surnameRegisterInput">Last name</label>
-      <input type="text" class="form-control" id="lastnameRegisterInput" placeholder="Enter your lastname" name="lastname" required ngModel #lastname="ngModel">
-    </div>
-    <div class="clearfix"></div>
-    <div class="form-group float-left signup-inline-input">
-      <label for="usernameRegisterInput">Username</label>
-      <input type="text" class="form-control" id="usernameRegisterInput" placeholder="Enter username" name="username" required ngModel #username="ngModel">
-      <small class="form-text text-muted">Mindenféle username szabályok</small>
-    </div>
-    <div class="form-group float-right signup-inline-input">
-      <label for="passwordRegisterInput">Password</label>
-      <input type="password" class="form-control" id="passwordRegisterInput" aria-describedby="passwordHelp" placeholder="Enter password" name="password" required ngModel #password="ngModel">
-      <small class="form-text text-muted">Mindenféle password szabályok</small>
-    </div>
-    <div class="clearfix"></div>
-    <div class="form-group">
-      <label for="emailRegisterInput">Email</label>
-      <input type="email" class="form-control" id="emailRegisterInput" placeholder="Enter email" name="email" required ngModel #email="ngModel">
-    </div>
-    <!-- TODO : Form invalid if the terms havent been accepted/other fields are not correctly filled out. This probably means a custom 
-      angular2 based formcontrol as right now name="tos" ngModel etc is a quick semi-hacky workaround for validation.
-    -->
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="acceptTerms" name="tos" ngModel #tos="ngModel" required> 
-      <label class="form-check-label" for="acceptTerms">I have read and accepted the terms of use.</label>
-    </div>
-    <button type="submit" class="btn btn-success float-right signup-submit-button" [disabled]="!signupForm.form.valid">Sign up!</button>
-  </form>
+  </div>
+</div>
