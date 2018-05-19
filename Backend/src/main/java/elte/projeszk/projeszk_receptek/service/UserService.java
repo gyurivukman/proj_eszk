@@ -57,6 +57,8 @@ public class UserService {
 
         if (!validUsername(username)) {
             map.put("userName", "Username must between 5 and 13 characters long and can only contain alphanumeric values.");
+        } else if (userRepository.findByUsername(username).isPresent()) {
+            map.put("username", "This username is already in use.");
         }
         if (!validName(firstName)) {
             map.put("firstName", "First name must between 3 and 13 characters long and can only contain letters.");
@@ -69,12 +71,13 @@ public class UserService {
         }
         if (!validEmail(email)) {
             map.put("email", "Email must be valid. (examples_1@examples.com)");
+        } else if (userRepository.findByEmail(email).isPresent()) {
+            map.put("email", "This email address is already in use.");
         }
         if (!tos) {
             map.put("tos", "Terms of Service must be accepted!");
         }
-
-        if (validUsername(username) && validName(firstName) && validName(lastName) && validPassword(password) && validEmail(email) && tos) {
+        if (map.isEmpty()) {
             try {
                 String salt = generateStrongPasswordHash(username);
                 User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password), salt, null, null, null);
@@ -149,7 +152,7 @@ public class UserService {
     }
 
     private static boolean validName(String name) {
-        return name != null && name.matches("[a-zA-Zá-űÁ-Ű]{3,13}");
+        return name != null && name.matches("[A-Z][a-zA-Zá-űÁ-Ű]{2,13}");
     }
 
     private static boolean validPassword(String password) {
@@ -167,5 +170,4 @@ public class UserService {
         return email != null
                 && Pattern.compile(emailRegex).matcher(email).matches();
     }
-
 }
