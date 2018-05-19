@@ -1,7 +1,7 @@
 import { Recipe } from "./recipe.model";
 
 export interface User{
-    id:number;
+    id?:number;
     username:string;
     surname?:string;
     forename?:string;
