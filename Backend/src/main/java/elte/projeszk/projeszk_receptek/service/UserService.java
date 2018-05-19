@@ -14,7 +14,10 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 public class UserService {
@@ -34,8 +37,8 @@ public class UserService {
 
         if (optional.isPresent()) {
                 try {
-                    if (validatePassword(password, optional.get().getPassword())) {
-                        User user = optional.get();
+                    User user = optional.get();
+                    if (validatePassword(password, user.getPassword() + user.getSalt())) {
                         return Jwts.builder()
                                 .setSubject(user.getUsername())
                                 .claim("id", user.getId())
@@ -49,7 +52,41 @@ public class UserService {
             return null;
     }
 
-    private static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public Map<String, String> signUp(String username, String firstName, String lastName, String password, String email, boolean tos) {
+        Map<String, String> map = new HashMap<>();
+
+        if (!validUsername(username)) {
+            map.put("userName", "Username must between 5 and 13 characters long and can only contain alphanumeric values.");
+        }
+        if (!validName(firstName)) {
+            map.put("firstName", "First name must between 3 and 13 characters long and can only contain letters.");
+        }
+        if (!validName(lastName)) {
+            map.put("lastName", "Last name must between 3 and 13 characters long and can only contain letters.");
+        }
+        if (!validPassword(password)) {
+            map.put("password", "Password must between 5 and 15 characters long , has to contain at least one uppercase letter and one number.");
+        }
+        if (!validEmail(email)) {
+            map.put("email", "Email must be valid. (examples_1@examples.com)");
+        }
+        if (!tos) {
+            map.put("tos", "Terms of Service must be accepted!");
+        }
+
+        if (validUsername(username) && validName(firstName) && validName(lastName) && validPassword(password) && validEmail(email) && tos) {
+            try {
+                String salt = generateStrongPasswordHash(username);
+                User user = new User(username, firstName, lastName, email, generateStrongPasswordHash(password) + salt, salt, null, null, null);
+                userRepository.save(user);
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                System.out.printf("Error message: %s%n", e.getMessage());
+            }
+        }
+        return map;
+    }
+
+    private static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
@@ -104,6 +141,30 @@ public class UserService {
             bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
         }
         return bytes;
+    }
+
+    private static boolean validUsername(String username) {
+        return username != null && username.matches("[a-zA-Z0-9]{5,13}");
+    }
+
+    private static boolean validName(String name) {
+        return name != null && name.matches("[a-zA-Zá-űÁ-Ű]{3,13}");
+    }
+
+    private static boolean validPassword(String password) {
+        return password != null
+                && password.length() > 5
+                && password.length() < 15
+                && Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$").matcher(password).matches();
+    }
+
+    private static boolean validEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        return email != null
+                && Pattern.compile(emailRegex).matcher(email).matches();
     }
 
 }

@@ -21,10 +21,20 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login",  method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestBody Map<String, String> body) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
             String jwt = userService.login(body.get("username"), body.get("password"));
             if (jwt != null)
                 return ResponseEntity.ok(jwt);
-            else return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+            else return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> signUp(@RequestBody Map<String, String> body) {
+        Map<String, String> map = userService.signUp(body.get("username"), body.get("firstName"), body.get("lastName"),
+                body.get("password"), body.get("email"), Boolean.getBoolean(body.get("tos")));
+        if (map.isEmpty())
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        else
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(map);
     }
 }
