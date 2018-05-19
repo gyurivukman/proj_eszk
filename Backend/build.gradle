@@ -39,6 +39,12 @@ dependencies {
 def props = new Properties()
 file("/src/main/resources/application.properties").withInputStream { props.load(it) }
 
+ext{
+	if(project.ext.runList==null){
+		runList = ""
+	}
+}
+
 liquibase{
 	activities{
 		migrate {
@@ -66,11 +72,8 @@ liquibase{
 			referencePassword props.getProperty('liquibase.referencedb.password')
 		}
 	}
-	if(!project.hasProperty('runList')){
-		runList = "migrate"
-	}else{
-		runList = project.ext.runList
-	}
+
+	runList = project.ext.runList
 
 }
 def buildTimestamp() {

@@ -9,5 +9,5 @@ export interface User{
     recipes?:Recipe[]
     comments?:Comment[]
     
-    avatar?:any; //bytearray for image.this is tmp for now.
+    avatar?:any; 
 }

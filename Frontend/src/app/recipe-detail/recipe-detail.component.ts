@@ -22,7 +22,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
 
   /* public id?:number;
     public user:User;
-    public creation_time:Date;
+    public created_at:Date;
     public order:number;
     public text:string; */
   addComment(){
@@ -32,7 +32,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
               username:"LOGGED_IN_USER", 
               avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
             },
-        creation_time:new Date().toLocaleDateString(),
+        created_at:new Date().toLocaleDateString(),
         order:this.commentData[this.commentData.length-1].order+1,
         text:this.userComment.trim()
       }
@@ -89,7 +89,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
             username:"CREATOR_1", 
             avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
           },
-          creation_time:"2018-05-20",
+          created_at:"2018-05-20",
           order:1,
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         },{
@@ -99,7 +99,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           },
          
           order:2,
-          creation_time:"2018-05-21",
+          created_at:"2018-05-21",
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         },{
           user:{
@@ -108,7 +108,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           },
           
           order:3,
-          creation_time:"2018-05-22",
+          created_at:"2018-05-22",
           text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
         }]
       }
