@@ -30,9 +30,9 @@ public class UserService {
     }
 
     public String login(String username, String password) {
-            Optional<User> optional = userRepository.findByUsername(username);
+        Optional<User> optional = userRepository.findByUsername(username);
 
-            if (optional.isPresent()) {
+        if (optional.isPresent()) {
                 try {
                     if (validatePassword(password, optional.get().getPassword())) {
                         User user = optional.get();
@@ -97,7 +97,7 @@ public class UserService {
         return diff == 0;
     }
 
-    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
+    private static byte[] fromHex(String hex) {
         byte[] bytes = new byte[hex.length() / 2];
         for(int i = 0; i<bytes.length ;i++)
         {
