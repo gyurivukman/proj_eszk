@@ -3,6 +3,7 @@ package elte.projeszk.projeszk_receptek.controller;
 import elte.projeszk.projeszk_receptek.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         else
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(map);
+    }
+
+    @RequestMapping(value = "/{id}/avatar", method = RequestMethod.POST)
+    public ResponseEntity<byte[]> getAvatar(@PathVariable Integer id) {
+        byte[] avatar = userService.getAvatar(id);
+        if (avatar != null)
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(avatar);
+        else
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 }
