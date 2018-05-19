@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { CommentComponent } from './recipe-detail/comment/comment.component';
 import { AuthModule } from './auth.module';
 import { LoginService } from './login/login.service';
+import { SignupService } from './signup/signup.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoginService } from './login/login.service';
     AuthModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })
