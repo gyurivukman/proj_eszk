@@ -2,7 +2,10 @@ package elte.projeszk.projeszk_receptek.service;
 
 import elte.projeszk.projeszk_receptek.model.User;
 import elte.projeszk.projeszk_receptek.repository.UserRepository;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKeyFactory;
@@ -18,18 +21,26 @@ public class UserService {
 
     private UserRepository userRepository;
 
+    @Value("${jwt.key}")
+    private String key;
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public User login(String username, String password) {
+    public String login(String username, String password) {
             Optional<User> optional = userRepository.findByUsername(username);
 
             if (optional.isPresent()) {
                 try {
                     if (validatePassword(password, optional.get().getPassword())) {
-                        return optional.get();
+                        User user = optional.get();
+                        return Jwts.builder()
+                                .setSubject(user.getUsername())
+                                .claim("id", user.getId())
+                                .signWith(SignatureAlgorithm.HS512, key)
+                                .compact();
                     }
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                     System.out.println("Error: " + e.getMessage());
