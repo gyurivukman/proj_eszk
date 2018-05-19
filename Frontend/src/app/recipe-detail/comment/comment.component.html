@@ -1,0 +1,10 @@
+<div class="col-12 d-flex py-2 mb-2 comment-container" *ngIf="data">
+  <div class="w-75 text-justify">
+    <p>{{data.text}}</p>
+  </div>
+  <div class="w-25 d-flex flex-column justify-content-start">
+    <img src={{data.avatar}} class="comment-user-avatar mx-auto">
+    <span class="mx-auto">{{data.creator}}</span>
+    <span class="mx-auto">{{data.date}}</span>
+  </div>
+</div>

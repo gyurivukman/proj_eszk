@@ -1,10 +1,4 @@
-.recipe-details-user-avatar{
-    height:35px;
-    max-height:35px;
 
-    width:35px;
-    max-width:35px;
-}
 .recipe-details-image-rounded{
     border:1px solid #3CB371;
     border-radius:5px;
@@ -78,7 +72,10 @@
 .step-number{
     font-size:2.5em;
 }
+.recipe-details-user-avatar{
+    height:35px;
+    max-height:35px;
 
-.comment-container:not(:last-child){
-    border-bottom:1px inset grey;
+    width:35px;
+    max-width:35px;
 }

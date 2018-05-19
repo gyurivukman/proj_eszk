@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FridgeComponent } from './fridge/fridge.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RouterModule } from '@angular/router';
+import { CommentComponent } from './recipe-detail/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
     SignupComponent,
     FridgeComponent,
     RecipesComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

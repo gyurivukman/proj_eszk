@@ -13,6 +13,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
 
   activatedRouteSub:Subscription;
   recipeData:Recipe;
+  commentData;
   constructor(private route:ActivatedRoute) {
     
   }
@@ -61,6 +62,22 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           createdAt:"2015-06-15T09:03:01+0900",
           tags:["tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tasdasdasdasdasdasasasdag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2"]
         }
+        this.commentData = [{
+          creator:"CREATOR_1",
+          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
+          date:"2018-05-20",
+          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
+        },{
+          creator:"CREATOR_2",
+          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
+          date:"2018-05-21",
+          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
+        },{
+          creator:"CREATOR_3",
+          avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
+          date:"2018-05-22",
+          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
+        }]
       }
     )
   }

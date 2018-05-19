@@ -38,7 +38,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-6 ingredient-container">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ingredient-container">
     <h2 class="roboto font-weight-bold">Ingredients:</h2>
     <ul>
       <li class="ingredient-item mb-2" *ngFor="let ingredient of recipeData.ingredients">
@@ -47,7 +47,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-6">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 steps-container">
     <h2 class="text-right roboto font-weight-bold">Steps:</h2>
     <ul>
       <li class="step-item mb-2" *ngFor="let step of recipeData.steps">
@@ -64,7 +64,8 @@
 </div>
 <div clas="row">
   <div class="col-12 text-decoration-container"><h2 class="roboto">Comments</h2></div>
-
+  <app-comment *ngFor="let comment of commentData" [data]="comment"></app-comment>
+<!-- 
   <div class="col-12 d-flex py-2 mb-2 comment-container">
     <div class="w-25 d-flex flex-column justify-content-center">
       <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png" class="recipe-details-user-avatar mx-auto">
@@ -96,6 +97,6 @@
     <div class="w-75 text-justify">
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!</p>
     </div>
-  </div>
+  </div> -->
 
 </div>
