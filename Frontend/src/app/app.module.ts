@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule} from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +16,8 @@ import { FridgeComponent } from './fridge/fridge.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RouterModule } from '@angular/router';
 import { CommentComponent } from './recipe-detail/comment/comment.component';
+import { AuthModule } from './auth.module';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,12 @@ import { CommentComponent } from './recipe-detail/comment/comment.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

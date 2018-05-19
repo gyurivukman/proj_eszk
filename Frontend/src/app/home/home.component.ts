@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private router:Router) {}
+  constructor(private router:Router,private jwthelper:JwtHelper) {}
 
   ngOnInit() {}
 
-  attemptLogin(loginForm:FormGroup){
-    console.log(loginForm)
+  isUserLoggedIn(){
+    let token = localStorage.getItem("token");
+    return token != null && !this.jwthelper.isTokenExpired(token);
   }
-
-  attemptSignup(signupForm:FormGroup){
-    console.log(signupForm.value)
-  }
-
 }

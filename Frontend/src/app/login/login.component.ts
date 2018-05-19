@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { AuthHttp } from 'angular2-jwt';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +10,17 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:Http) { 
+  }
 
   ngOnInit() {
   }
 
   attemptLogin(formGroup:FormGroup){
-    console.log(formGroup.value);
+    this.http.post('/api/user/login',formGroup.value).toPromise().then(
+      (response)=>{
+        localStorage.setItem("token",response.json()['token'])
+      }
+    )
   }
 }

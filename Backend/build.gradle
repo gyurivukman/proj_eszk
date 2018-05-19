@@ -26,6 +26,9 @@ repositories {
 	mavenCentral()
 }
 
+ext{
+    runList="migrate"
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -38,12 +41,6 @@ dependencies {
 }
 def props = new Properties()
 file("/src/main/resources/application.properties").withInputStream { props.load(it) }
-
-ext{
-	if(project.ext.runList==null){
-		runList = ""
-	}
-}
 
 liquibase{
 	activities{
@@ -73,7 +70,8 @@ liquibase{
 		}
 	}
 
-	runList = project.ext.runList
+    if(project.ext.runList!=null) runList=project.ext.runList
+	else runList="migrate"
 
 }
 def buildTimestamp() {
