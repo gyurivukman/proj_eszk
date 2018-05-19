@@ -35,27 +35,28 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+def props = new Properties()
+file("/src/main/resources/application.properties").withInputStream { props.load(it) }
 
 liquibase{
 	activities{
-
 		migrate {
 			changeLogFile 'src/main/resources/db/master.xml'
-			url 'jdbc:mysql://localhost:3306/dev'
+			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
 			username 'root'
 			password 'root'
 		}
 
 		seeddemo{
 			changeLogFile 'src/main/resources/db/seeddemo.xml'
-			url 'jdbc:mysql://localhost:3306/dev'
+			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
 			username 'root'
 			password 'root'
 		}
 
 		generateDiffLog {
 			changeLogFile 'src/main/resources/db/changelog/'+this.buildTimestamp()+'.xml'
-			url 'jdbc:mysql://localhost:3306/proj_eszk'
+			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
 			username 'root'
 			password 'root'
 			referenceUrl 'jdbc:mysql://localhost:3306/dev'
