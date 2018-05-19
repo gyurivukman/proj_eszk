@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="gyuri (generated)" id="1526730223533-1">
+        <createTable tableName="ingredient_names">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-2">
+        <addColumn tableName="users">
+            <column name="avatar" type="LONGBLOB(2147483647)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-3">
+        <addColumn tableName="recipes">
+            <column name="downvotes" type="INT(10)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-4">
+        <addColumn tableName="ingredients">
+            <column name="ingredient_name_id" type="INT(10)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-5">
+        <addColumn tableName="ingredients">
+            <column name="recipe_id" type="INT(10)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-6">
+        <addColumn tableName="recipes">
+            <column name="upvotes" type="INT(10)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-7">
+        <addColumn tableName="ingredients">
+            <column name="value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-8">
+        <addUniqueConstraint columnNames="name" constraintName="UK_g99crq4ctd9uia4jn63qhyqod" tableName="ingredient_names"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-9">
+        <createIndex indexName="FK7p08vcn6wf7fd6qp79yy2jrwg" tableName="ingredients">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-10">
+        <createIndex indexName="FKl0uiho8oi7i7at7pfh1njn6yk" tableName="ingredients">
+            <column name="ingredient_name_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-11">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="ingredients" constraintName="FK7p08vcn6wf7fd6qp79yy2jrwg" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="recipes"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-12">
+        <addForeignKeyConstraint baseColumnNames="ingredient_name_id" baseTableName="ingredients" constraintName="FKl0uiho8oi7i7at7pfh1njn6yk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredient_names"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-13">
+        <dropForeignKeyConstraint baseTableName="recipes_ingredients" constraintName="FKgv230kq1ahptxm11oinp3s5mr"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-14">
+        <dropForeignKeyConstraint baseTableName="recipes_ingredients" constraintName="FKiylhkp3ir81fnbv9sjr59rg0y"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-15">
+        <dropUniqueConstraint constraintName="UK_j6tsl15xx76y4kv41yxr4uxab" tableName="ingredients"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-16">
+        <dropTable tableName="recipes_ingredients"/>
+    </changeSet>
+    <changeSet author="gyuri (generated)" id="1526730223533-17">
+        <dropColumn columnName="name" tableName="ingredients"/>
+    </changeSet>
+</databaseChangeLog>

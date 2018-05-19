@@ -42,26 +42,27 @@ liquibase{
 	activities{
 		migrate {
 			changeLogFile 'src/main/resources/db/master.xml'
-			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
-			username 'root'
-			password 'root'
+			url props.getProperty('spring.datasource.url')
+			username props.getProperty('spring.datasource.username')
+			password props.getProperty('spring.datasource.password')
 		}
 
 		seeddemo{
 			changeLogFile 'src/main/resources/db/seeddemo.xml'
-			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
-			username 'root'
-			password 'root'
+			url props.getProperty('spring.datasource.url')
+			username props.getProperty('spring.datasource.username')
+			password props.getProperty('spring.datasource.password')
 		}
 
 		generateDiffLog {
 			changeLogFile 'src/main/resources/db/changelog/'+this.buildTimestamp()+'.xml'
-			url 'jdbc:mysql://localhost:3306/'+props.getProperty('spring.datasource.name')
-			username 'root'
-			password 'root'
-			referenceUrl 'jdbc:mysql://localhost:3306/dev'
-			referenceUsername 'root'
-			referencePassword 'root'
+			url props.getProperty('spring.datasource.url')
+			username props.getProperty('spring.datasource.username')
+			password props.getProperty('spring.datasource.password')
+
+			referenceUrl props.getProperty('liquibase.referencedb.url')
+			referenceUsername props.getProperty('liquibase.referencedb.username')
+			referencePassword props.getProperty('liquibase.referencedb.password')
 		}
 	}
 

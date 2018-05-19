@@ -43,4 +43,8 @@ public class User extends BaseEntity {
     @OneToMany(targetEntity=Comment.class, mappedBy="user", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
+    @Lob
+    @Column(nullable = true, length = 1536)
+    private byte[] avatar;
+
 }

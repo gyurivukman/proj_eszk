@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -16,14 +15,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class Ingredient extends BaseEntity{
 
-    @Column(unique=true,nullable=false)
-    private String name;
+    @ManyToOne(targetEntity = IngredientName.class)
+    private IngredientName ingredient_name;
 
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="recipes_ingredients",
-            joinColumns=@JoinColumn(name="ingredient_id"),
-            inverseJoinColumns=@JoinColumn(name="recipe_id")
-    )
-    private List<Recipe> recipes;
+    @ManyToOne(targetEntity = Recipe.class)
+    @JoinColumn(name="recipe_id", referencedColumnName="id")
+    private Recipe recipe;
+
+    @Column(nullable=false)
+    private String value;
 
 }

@@ -40,10 +40,7 @@ public class Recipe extends BaseEntity {
     @JoinColumn(name="user_id", referencedColumnName="id")
     private User user;
 
-    @ManyToMany
-    @JoinTable(name="recipes_ingredients",
-            joinColumns=@JoinColumn(name="recipe_id"),
-            inverseJoinColumns=@JoinColumn(name="ingredient_id"))
+    @OneToMany(mappedBy="recipe", targetEntity = Ingredient.class,fetch = FetchType.LAZY)
     private List<Ingredient> ingredients;
 
     @OneToMany(targetEntity = RecipeStep.class, mappedBy="recipe")
@@ -51,5 +48,11 @@ public class Recipe extends BaseEntity {
 
     @OneToMany(mappedBy="recipe", targetEntity = Comment.class, fetch = FetchType.LAZY)
     private List<Comment> comments;
+
+    @Column(nullable=true)
+    private int upvotes;
+
+    @Column(nullable=true)
+    private int downvotes;
 
 }

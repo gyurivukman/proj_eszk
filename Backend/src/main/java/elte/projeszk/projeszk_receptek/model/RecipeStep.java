@@ -22,7 +22,6 @@ public class RecipeStep extends BaseEntity{
     private String text;
 
     @ManyToOne(targetEntity = Recipe.class)
-    @JoinColumn(name="recipe_id",referencedColumnName="id")
     private Recipe recipe;
 
 }
