@@ -13,11 +13,26 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
 
   activatedRouteSub:Subscription;
   recipeData:Recipe;
-  commentData;
+  commentData:any[];
+  userComment:string;
   constructor(private route:ActivatedRoute) {
     
   }
 
+  addComment(){
+    this.commentData.push(
+      {
+        creator:"LOGGED_IN_USER",
+        avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png",
+        date:new Date().toLocaleDateString(),
+        text:this.userComment.trim()
+      }
+    )
+    this.userComment="";
+  }
+  setUserComment(event:Event){
+    console.log(event);
+  }
   ngOnInit() {
     this.activatedRouteSub=this.route.params.subscribe(
       (params)=>{
@@ -82,6 +97,9 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
     )
   }
 
+  isUserCommentInvalid(){
+    return this.userComment == null || this.userComment.length<1 || !(/\S/.test(this.userComment))
+  }
   ngOnDestroy(){
     this.activatedRouteSub.unsubscribe();
   }

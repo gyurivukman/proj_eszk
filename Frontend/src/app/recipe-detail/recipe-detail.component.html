@@ -64,39 +64,9 @@
 </div>
 <div clas="row">
   <div class="col-12 text-decoration-container"><h2 class="roboto">Comments</h2></div>
+  <div class="col-12 comment-input-container">
+    <textarea id="comment-input" class="col-12" [(ngModel)]="userComment" #commentInput>{{userComment}}</textarea>
+    <button class="btn btn-success mx-auto" (click)="addComment()" [disabled]="isUserCommentInvalid()">Add comment!</button>
+  </div>
   <app-comment *ngFor="let comment of commentData" [data]="comment"></app-comment>
-<!-- 
-  <div class="col-12 d-flex py-2 mb-2 comment-container">
-    <div class="w-25 d-flex flex-column justify-content-center">
-      <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png" class="recipe-details-user-avatar mx-auto">
-      <span class="mx-auto">COMMENTER</span>
-      <span class="mx-auto">DATE</span>
-    </div>
-    <div class="w-75 text-justify">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!</p>
-    </div>
-  </div>
-
-  <div class="col-12 d-flex py-2 mb-2 comment-container">
-    <div class="w-25 d-flex flex-column justify-content-center">
-      <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png" class="recipe-details-user-avatar mx-auto">
-      <span class="mx-auto">COMMENTER</span>
-      <span class="mx-auto">DATE</span>
-    </div>
-    <div class="w-75 text-justify">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!</p>
-    </div>
-  </div>
-
-  <div class="col-12 d-flex py-2 mb-2 comment-container">
-    <div class="w-25 d-flex flex-column justify-content-center">
-      <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png" class="recipe-details-user-avatar mx-auto">
-      <span class="mx-auto">COMMENTER</span>
-      <span class="mx-auto">DATE</span>
-    </div>
-    <div class="w-75 text-justify">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!</p>
-    </div>
-  </div> -->
-
 </div>
