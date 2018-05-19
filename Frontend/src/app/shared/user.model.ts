@@ -1,7 +1,7 @@
 import { Recipe } from "./recipe.model";
 
 export interface User{
-    id?:number;
+    id:number;
     username:string;
     surname?:string;
     forename?:string;
@@ -9,5 +9,5 @@ export interface User{
     recipes?:Recipe[]
     comments?:Comment[]
     
-    avatar?:any; //bytearray for image.this is tmp for now.
+    avatar?:any; 
 }
