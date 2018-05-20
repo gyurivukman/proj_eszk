@@ -40,7 +40,7 @@
             <label class="form-check-label" for="acceptTerms">I have read and accepted the terms of use.</label>
             <small *ngIf="errors && errors.tos" class="form-text text-danger">{{errors.tos}}</small>
           </div>
-          <button type="submit" class="btn btn-success float-right signup-submit-button" [disabled]="!signupForm.form.valid">Sign up!</button>
+          <button #signUpButton type="submit" class="btn btn-success float-right signup-submit-button" [disabled]="!signupForm.form.valid">Sign up!</button>
         </form>
       </div>
       <!-- <div class="modal-footer">
