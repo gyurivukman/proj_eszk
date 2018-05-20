@@ -8,12 +8,11 @@ matrix:
         - cd Backend/
         - echo "SETTING MYSQL CREDENTIALS..."
         - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+        - mysql -uroot -proot 'CREATE DATABASE proj_eszk;'
+        - gradle update -PrunList=migrate
         - echo "GRADLE ASSEMBLE..."
         - gradle assemble
       script:
-        - echo "CREATING AND MIGRATING DATABASE"
-        - mysql -uroot -proot 'CREATE DATABASE proj_eszk;'
-        - gradle update -PrunList=migrate
         - gradle test
       after_success:
         - gradle build
