@@ -49,7 +49,7 @@ import { MyrecipesComponent } from './myrecipes/myrecipes.component';
   ],
   providers: [
     LoginService,
-    SignupService
+    SignupService,
   ],
   bootstrap: [AppComponent]
 })

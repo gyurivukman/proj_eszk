@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
+import { RecipesComponent } from '../recipes/recipes.component';
 
 @Component({
   selector: 'app-home',
@@ -23,4 +24,10 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem("shopList");
     this.router.navigate(['/recipes'])
   }
+  
+  filterFrontpage(event:Event){
+    let param = event.srcElement.innerHTML
+    this.router.navigate(['recipes'], { queryParams: {tag:param}})
+  }
+
 }

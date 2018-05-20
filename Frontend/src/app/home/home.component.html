@@ -39,12 +39,13 @@
     <div class="row justify-content-center">
         <nav class="nav">
           <a class="nav-link" [routerLink]="['recipes']">Home</a>
-          <a class="nav-link" [routerLink]="['recipes']">Breakfast</a>
-          <a class="nav-link" [routerLink]="['recipes']">Lunch</a>
-          <a class="nav-link" [routerLink]="['recipes']">Dinner</a>
-          <a class="nav-link" href="#">Healthy</a>
-          <a class="nav-link" href="#">Cookies</a>
-          <a class="nav-link" href="#">Holidays</a>
+          <a class="nav-link" (click)="filterFrontpage($event)" value="breakfast">Breakfast</a>
+          <a class="nav-link" (click)="filterFrontpage($event)" value="lunch">Lunch</a>
+          <a class="nav-link" (click)="filterFrontpage($event)" value="dinner">Dinner</a>
+
+          <a class="nav-link" (click)="filterFrontpage($event)" value="healthy">Healthy</a>
+          <a class="nav-link" (click)="filterFrontpage($event)" value="cookies">Cookies</a>
+          <a class="nav-link" (click)="filterFrontpage($event)" value="holidays">Holidays</a>
         </nav>
     </div>
   </div>

@@ -22,10 +22,19 @@
 .recipe-card {
   margin: 1rem 0 1rem 0;
 }
+
 .lemonada{
     font-family: 'Lemonada', sans-serif;
     font-size: 1.3em;
     color:#FFF;
     margin-left:20px;
     -webkit-text-stroke: 0.5px black;
+}
+
+.nav-link{
+    color: #008cba !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+    -webkit-text-decoration-skip: objects !important;
+    cursor: pointer;
 }
