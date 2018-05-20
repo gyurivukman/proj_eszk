@@ -8,6 +8,8 @@ matrix:
     - language: java
       jdk: oraclejdk8
       before_script:
+        - service mysql status
+        - service mysql restart
         - cd Backend/
         - echo "SETTING MYSQL CREDENTIALS..."
         - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\nCREATE DATABASE proj_esk" | mysql -u root
