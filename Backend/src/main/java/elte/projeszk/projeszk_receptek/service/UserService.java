@@ -150,22 +150,22 @@ public class UserService {
         return bytes;
     }
 
-    private static boolean validUsername(String username) {
+    public static boolean validUsername(String username) {
         return username != null && username.matches("[a-zA-Z0-9]{5,13}");
     }
 
-    private static boolean validName(String name) {
-        return name != null && name.matches("[A-Z][a-zA-Zá-űÁ-Ű]{2,13}");
+    public static boolean validName(String name) {
+        return name != null && name.matches("[A-Z][a-zá-ű]{2,12}");
     }
 
-    private static boolean validPassword(String password) {
+    public static boolean validPassword(String password) {
         return password != null
                 && password.length() > 5
                 && password.length() < 15
                 && Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$").matcher(password).matches();
     }
 
-    private static boolean validEmail(String email) {
+    public static boolean validEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
