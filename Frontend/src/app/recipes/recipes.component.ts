@@ -1,11 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css']
 })
-export class RecipesComponent implements OnInit {
+export class RecipesComponent implements OnInit,OnDestroy{
+  private sub:Subscription;
+
+  constructor(private route:ActivatedRoute){}
+
+  ngOnInit(){
+    this.sub = this.route.queryParams.subscribe(
+      (params)=>{
+        console.log("RECIPES params: ",params)
+      }
+    )
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe()
+  }
+
   dummyCards = [
     {
       id: 1,
@@ -62,9 +80,5 @@ export class RecipesComponent implements OnInit {
       imgUrl: 'https://i.imgur.com/b0awqEb.jpg'
     }
   ];
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  
 }

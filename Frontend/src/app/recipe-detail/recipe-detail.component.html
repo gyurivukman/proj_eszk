@@ -7,7 +7,7 @@
 </div>
 <div class="row">
   <div class="col-6">
-    <span class="tag d-inline-block bg-primary mt-1" *ngFor="let tag of recipeData.tags" href="#">{{tag}} </span>
+    <a class="tag d-inline-block bg-primary mt-1" *ngFor="let tag of recipeData.tags" [routerLink]="['recipes']" [queryParams]="{'tag':tag}">{{tag}} </a>
   </div>
   <div class="col-6 text-right">
     <ul class="recipe-details-metadata">
