@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
 public class ProjeszkReceptekApplicationTests {
 
 	private static final String USERNAME = "UserAnimal";
+	private static final String PASSWORD = "Almafa1234";
 
 	private UserRepository userRepository;
 	private UserService userService;
@@ -38,7 +39,7 @@ public class ProjeszkReceptekApplicationTests {
 
 	@Before
 	public void init() {
-		userService.signUp(USERNAME, "Kukken", "Mukken", "Almafa1234", "example@example.com", true);
+		userService.signUp(USERNAME, "Kukken", "Mukken", PASSWORD, "example@example.com", true);
 	}
 
 	@Test
@@ -77,7 +78,7 @@ public class ProjeszkReceptekApplicationTests {
 		Optional<User> optional = userRepository.findByUsername(USERNAME);
 
 		optional.ifPresent(user ->
-				assertNotNull("Bad response to Login.", userService.login(user.getUsername(), user.getPassword())));
+				assertNotNull("Bad response to Login.", userService.login(user.getUsername(), PASSWORD)));
 
 		assertNull("Bad response to Login.", userService.login("UserAnimalTest", "Almafa1234"));
 		assertNull("Bad response to Login.", userService.login("UserAnimal", "Almafa123"));

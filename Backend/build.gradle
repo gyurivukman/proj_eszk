@@ -29,6 +29,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-actuator")
 	compile('org.liquibase:liquibase-core')
 	compile ('io.jsonwebtoken:jjwt:0.9.0')
 	runtime('mysql:mysql-connector-java')
