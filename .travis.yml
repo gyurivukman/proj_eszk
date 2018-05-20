@@ -26,11 +26,13 @@ matrix:
 
       addons:
       apt:
-      sources:
-        - google-chrome
-      packages:
+        sources:
+          - google-chrome
+          - mysql-5.7-trusty
+        packages:
         - google-chrome-stable
         - google-chrome-beta
+        - mysql-server
 
       before_install:
         - export CHROME_BIN=chromium-browser
