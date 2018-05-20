@@ -7,6 +7,7 @@ matrix:
       before_script:
         - cd Backend/
         - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+        - gradle assemble
         - gradle update -PrunList=migrate
       script:
         - mysql -uroot -proot 'CREATE DATABASE proj_eszk;'
