@@ -9,7 +9,7 @@ matrix:
       jdk: oraclejdk8
       before_script:
         - cd Backend/
-        - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\nCREATE DATABASE proj_eszk CHARACTER SET latin1 COLLATE latin1_swedish_ci\n" | mysql -u root
+        - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\nCREATE DATABASE proj_eszk CHARACTER SET latin1 COLLATE latin1_swedish_ci\n" | mysql -u root -p root
         - echo "SETTING MYSQL CREDENTIALS..."
         - gradle update -PrunList=migrate
         - echo "GRADLE ASSEMBLE..."
@@ -40,6 +40,7 @@ matrix:
         apt:
           sources:
             - google-chrome
+            - mysql-5.7-trusty
           packages:
             - google-chrome-stable
             - google-chrome-beta
