@@ -1,6 +1,5 @@
 package elte.projeszk.projeszk_receptek.controller;
 
-import elte.projeszk.projeszk_receptek.model.Recipe;
 import elte.projeszk.projeszk_receptek.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
