@@ -10,7 +10,7 @@ matrix:
       before_script:
         - cd Backend/
         - echo "======SETTING MYSQL CREDENTIALS...======="
-        - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\nCREATE DATABASE proj_eszk CHARACTER SET latin1 COLLATE latin1_swedish_ci\n" | mysql -uroot -proot
+        - echo "USE mysql;\nCREATE DATABASE proj_eszk CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci\n" | mysql -uroot -proot
         - gradle update -PrunList=migrate
         - echo "GRADLE ASSEMBLE..."
         - gradle assemble
