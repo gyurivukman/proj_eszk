@@ -6,11 +6,14 @@ matrix:
       jdk: oraclejdk8
       before_script:
         - cd Backend/
+        - echo "SETTING MYSQL CREDENTIALS..."
         - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+        - echo "GRADLE ASSEMBLE..."
         - gradle assemble
-        - gradle update -PrunList=migrate
       script:
+        - echo "CREATING AND MIGRATING DATABASE"
         - mysql -uroot -proot 'CREATE DATABASE proj_eszk;'
+        - gradle update -PrunList=migrate
         - gradle test
       after_success:
         - gradle build
