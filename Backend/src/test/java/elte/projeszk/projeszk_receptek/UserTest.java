@@ -1,13 +1,32 @@
 package elte.projeszk.projeszk_receptek;
 
+import elte.projeszk.projeszk_receptek.model.User;
 import elte.projeszk.projeszk_receptek.service.UserService;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class UserTest {
+
+    private List<User> validUser;
+
+    @Before
+    public void init() {
+        validUser = new ArrayList<>(Arrays.asList(
+                new User("UserAnimal", "Kukken", "Mukken", "example@example.com", "Almafa1234", null, null, null),
+                new User("admin", "Mikorka", "Kálmán", "admin_example@example.com", "Almafa1234", null, null, null)
+        ));
+    }
 
     @Test
     public void validUsernameTest() {
@@ -24,6 +43,8 @@ public class UserTest {
         assertTrue("Check validUsername() method.", UserService.validUsername("userAnimal"));
         assertTrue("Check validUsername() method.", UserService.validUsername("user1995"));
         assertTrue("Check validUsername() method.", UserService.validUsername("UserAnimal91"));
+
+        validUser.forEach(u -> assertTrue("Check validUsername() method.", UserService.validUsername(u.getUsername())));
     }
 
     @Test
@@ -43,6 +64,11 @@ public class UserTest {
         assertTrue("Check validName() method.", UserService.validName("Dávid"));
         assertTrue("Check validName() method.", UserService.validName("Ferenc"));
         assertTrue("Check validName() method.", UserService.validName("Gizi"));
+
+        validUser.forEach(u -> {
+            assertTrue("Check validName() method.", UserService.validName(u.getForeName()));
+            assertTrue("Check validName() method.", UserService.validName(u.getSurName()));
+        });
     }
 
     @Test
@@ -61,6 +87,8 @@ public class UserTest {
         assertTrue("Check validEmail() method.", UserService.validEmail("example@example.com"));
         assertTrue("Check validEmail() method.", UserService.validEmail("valid_mail@example.hu"));
         assertTrue("Check validEmail() method.", UserService.validEmail("valid.mail.example@example.com"));
+
+        validUser.forEach(u -> assertTrue("Check validEmail() method.", UserService.validEmail(u.getEmail())));
     }
 
     @Test
@@ -75,5 +103,20 @@ public class UserTest {
 
         assertTrue("Check validEmail() method.", UserService.validPassword("Awfdw9"));
         assertTrue("Check validEmail() method.", UserService.validPassword("adMin98"));
+
+        validUser.forEach(u -> assertTrue("Check validEmail() method.", UserService.validPassword(u.getPassword())));
+    }
+
+    @Test
+    public void hashTest() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        String password = "ADdmin12345";
+        String hashPassword = UserService.generateStrongPasswordHash(password);
+
+        assertTrue("Check validatePassword() method.", UserService.validatePassword(password, hashPassword));
+    }
+
+    @After
+    public void end() {
+        validUser.clear();
     }
 }
