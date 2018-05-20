@@ -37,7 +37,7 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 def props = new Properties()
-file("/src/main/resources/application.properties").withInputStream { props.load(it) }
+file("src/main/resources/application.properties").withInputStream { props.load(it) }
 
 liquibase{
 	activities{
