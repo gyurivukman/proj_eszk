@@ -1,16 +1,15 @@
-<form #fridgeForm="ngForm" (ngSubmit)="fridgeSearch(fridgeForm.form)" class="d-flex flex-column text-centerjustify-content-end h-100">
+<form #fridgeForm="ngForm" (ngSubmit)="fridgeSearch(fridgeForm.form)" class="d-flex flex-column text-center justify-content-end h-100">
     <h2 class="ml-auto">What's in your fridge?</h2>
     <div class="form-group w-75 ml-auto">
       <span class="ml-auto">Include these items: </span>
-      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude1" name="fridgeFormInclude1" ngModel #username="ngModel">
-      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude2" name="fridgeFormInclude2" ngModel #username="ngModel">
-      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude3" name="fridgeFormInclude3" ngModel #username="ngModel">
+      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude1" name="fridgeFormInclude1" ngModel>
+      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude2" name="fridgeFormInclude2" ngModel>
+      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormInclude3" name="fridgeFormInclude3" ngModel>
     </div>
-    
     <div class="form-group w-75 ml-auto">
       <span class="ml-auto">Exclude these items: </span>
-      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormExclude1" name="fridgeFormExclude1" ngModel #username="ngModel">
-      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormExclude2" name="fridgeFormExclude2" ngModel #username="ngModel">
+      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormExclude1" name="fridgeFormExclude1" ngModel>
+      <input type="text" class="ml-auto mt-2 form-control-sm w-100" id="fridgeFormExclude2" name="fridgeFormExclude2" ngModel>
     </div>
 
     <button type="submit" class="d-block btn btn-success btn-sm w-75 ml-auto mt-auto">Search!</button>
