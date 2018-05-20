@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -20,6 +20,16 @@ public class RecipeController {
     @Autowired
     public void setRecipeService(RecipeService recipeService) {
         this.recipeService = recipeService;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> getRecipe(@PathVariable Integer id) {
+        Map<String, Object> response = recipeService.getRecipe(id);
+
+        if (response.isEmpty())
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        else
+            return ResponseEntity.ok(response);
     }
 
     @RequestMapping(value = "/{id}/picture", method = RequestMethod.GET)
@@ -34,6 +44,26 @@ public class RecipeController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> getPictures(@RequestParam("id") Integer id) {
         List<Map<String, Object>> response = recipeService.getPictures(id);
+
+        if (response.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        else
+            return ResponseEntity.ok(response);
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public ResponseEntity<?> searchByText(@RequestParam("search") String search) {
+        List<Map<String, Object>> response = recipeService.searchByText(search);
+
+        if (response.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        else
+            return ResponseEntity.ok(response);
+    }
+
+    @RequestMapping(value = "/tag", method = RequestMethod.POST)
+    public ResponseEntity<?> searchByTag(@RequestParam("tag") String tag) {
+        List<Map<String, Object>> response = recipeService.searchByTag(tag);
 
         if (response.isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
