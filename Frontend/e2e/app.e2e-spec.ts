@@ -1,4 +1,4 @@
-import { AppPage } from './app.po';
+/*import { AppPage } from './app.po';
 
 describe('frontend App', () => {
   let page: AppPage;
@@ -11,4 +11,4 @@ describe('frontend App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
-});
+});*/
