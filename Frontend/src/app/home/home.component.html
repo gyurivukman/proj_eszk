@@ -18,6 +18,19 @@
         <button *ngIf="isUserLoggedIn()" type="button" class="btn btn-sm btn-primary float-right" (click)="logout()">
           Logout
         </button>
+        <div *ngIf="isUserLoggedIn()" class="btn-group float-right">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="./assets/person.svg" alt="profile-icon">
+            Profile
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['shop']">Shopping list</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['account']">Account</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['myrecipes']">My recipes</a>
+          </div>
+        </div>
       </div>
       <app-signup-modal></app-signup-modal>
       <app-login></app-login>
@@ -26,7 +39,6 @@
     <div class="row justify-content-center">
         <nav class="nav">
           <a class="nav-link" [routerLink]="['recipes']">Home</a>
-          <a class="nav-link" [routerLink]="['shop']">Shopping List</a>
           <a class="nav-link" [routerLink]="['recipes']">Breakfast</a>
           <a class="nav-link" [routerLink]="['recipes']">Lunch</a>
           <a class="nav-link" [routerLink]="['recipes']">Dinner</a>

@@ -8,7 +8,6 @@ export class SignupService {
   constructor(private http:Http) { }
 
   attemptSignup(data:SignUpData):Promise<any>{
-    console.log("ezzel signupolok: ",data)
     return this.http.post("/api/user/register", data).toPromise()
   }
 

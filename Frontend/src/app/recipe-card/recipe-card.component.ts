@@ -12,6 +12,8 @@ export class RecipeCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.card.title = this.card.title.substr(0,27)+"...";
+    this.card.text = this.card.text.substr(0,70)+"...";
   }
 
 }

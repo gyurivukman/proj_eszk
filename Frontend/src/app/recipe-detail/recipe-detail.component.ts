@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Recipe } from '../shared/recipe.model';
@@ -16,6 +16,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
   recipeData:Recipe;
   commentData:Comment[];
   userComment:string;
+  colorPalette:string[] = ['#E2725B','#FFC864','#F58B4C','#CD594A','#A3B86C','#43ABC9']
   constructor(private route:ActivatedRoute) {
     
   }
@@ -28,7 +29,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
               avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
             },
         created_at:new Date().toLocaleDateString(),
-        order:this.commentData[this.commentData.length-1].order+1,
+        order:this.commentData.length>0?this.commentData[this.commentData.length-1].order+1:1,
         text:this.userComment.trim()
       }
     )
@@ -78,6 +79,8 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
           createdAt:"2015-06-15T09:03:01+0900",
           tags:["tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tasdasdasdasdasdasasasdag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2"]
         }
+        //this.commentData=[]
+        
         this.commentData = [{
           user:{
             username:"CREATOR_1", 
@@ -114,5 +117,32 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy(){
     this.activatedRouteSub.unsubscribe();
+  }
+
+  addToShopList(){
+    let shopList:any = sessionStorage.getItem("shopList");
+
+    if(!shopList){
+      shopList = {}
+    }else{
+      shopList = JSON.parse(shopList);
+    }
+
+    for(let ingredient of this.recipeData.ingredients){  
+
+      if(!shopList[ingredient.name]){
+        shopList[ingredient.name]={};
+        shopList[ingredient.name].quantity=[];
+        shopList[ingredient.name].color=this.getBackgroundColor();
+      }
+      shopList[ingredient.name].quantity.push(ingredient.quantity)
+    }
+
+    sessionStorage.setItem("shopList",JSON.stringify(shopList))
+
+  }
+  getBackgroundColor():string{
+    let index = Math.floor(Math.random()*this.colorPalette.length)
+    return this.colorPalette[index];
   }
 }
