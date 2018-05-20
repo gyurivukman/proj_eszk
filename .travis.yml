@@ -19,6 +19,7 @@ matrix:
         - gradle test
       addons:
         apt:
+          update: true
           sources:
             - mysql-5.7-trusty
           packages:
@@ -38,6 +39,7 @@ matrix:
 
       addons:
         apt:
+          update: true
           sources:
             - google-chrome
             - mysql-5.7-trusty

@@ -38,14 +38,14 @@
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="datetime(6)"/>
-            <column name="description" type="VARCHAR(1000)">
+            <column name="description" type="TEXT(1000)">
                 <constraints nullable="false"/>
             </column>
             <column name="picture" type="LONGBLOB"/>
             <column name="rating" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="title" type="VARCHAR(255)">
+            <column name="title" type="VARCHAR(80)">
                 <constraints nullable="false"/>
             </column>
             <column name="user_id" type="INT"/>
