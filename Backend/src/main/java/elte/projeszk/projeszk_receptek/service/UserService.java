@@ -92,7 +92,7 @@ public class UserService {
         return userRepository.findById(id).map(User::getAvatar).orElse(null);
     }
 
-    private static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
@@ -122,7 +122,7 @@ public class UserService {
         }
     }
 
-    private static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
