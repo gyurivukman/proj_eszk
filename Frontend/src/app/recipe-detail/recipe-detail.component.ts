@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recipe } from '../shared/recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { Comment } from '../shared/comment.model'
+import { Http } from '@angular/http';
+import { JwtHelper } from 'angular2-jwt';
 
 @Component({
   selector: 'app-recipe',
@@ -17,18 +19,17 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
   commentData:Comment[];
   userComment:string;
   colorPalette:string[] = ['#E2725B','#FFC864','#F58B4C','#CD594A','#A3B86C','#43ABC9']
-  constructor(private route:ActivatedRoute) {
+  constructor(private route:ActivatedRoute,private http:Http,private jwthelper:JwtHelper) {
     
   }
 
   addComment(){
     this.commentData.push(
       {
-        user:{
-              username:"LOGGED_IN_USER", 
-              avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
-            },
-        created_at:new Date().toLocaleDateString(),
+        id:1,
+        user_id:1,
+        username:"LOGGED_IN_USER",
+        createdAt:new Date().toLocaleDateString(),
         order:this.commentData.length>0?this.commentData[this.commentData.length-1].order+1:1,
         text:this.userComment.trim()
       }
@@ -39,75 +40,16 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
   ngOnInit() {
     this.activatedRouteSub=this.route.params.subscribe(
       (params)=>{
-        this.recipeData = {
-          id:Number(params['recipeid']),
-          name:"Szuper Duper Palacsinta Deluxe",
-          description:"Lent voltunk vidéken aztán ez volt.The end.",
-          ingredients:[
-            {name:'Szuper', quantity:'9001'},
-            {name:'Duper', quantity:'15 dkg'},
-            {name:'Palacsinta', quantity:'1 db közepes'},
-            {name:'Mittomén', quantity:'3 cups'}
-          ],
-          steps:[
-            {
-              step:1,
-              description:"Szeleteld"
-            },
-            {
-              step:2,
-              description:"Keverd"
-            },
-            {
-              step:3,
-              description:"Süssed"
-            },
-            {
-              step:4,
-              description:"Add a kutyának"
-            }
-          ],
-          rating:8.1,
-          creator:{
-            username:'Mr. User',
-            surname:'Dr. Mr. Sir',
-            forename:'Júzer',
-            avatar:'http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png'
-          },
-          readyIn:40,
-          difficulty:"Easy",
-          createdAt:"2015-06-15T09:03:01+0900",
-          tags:["tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tasdasdasdasdasdasasasdag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2","tag1","tag2"]
-        }
-        //this.commentData=[]
-        
-        this.commentData = [{
-          user:{
-            username:"CREATOR_1", 
-            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
-          },
-          created_at:"2018-05-20",
-          order:1,
-          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
-        },{
-          user:{
-            username:"CREATOR_2", 
-            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
-          },
-         
-          order:2,
-          created_at:"2018-05-21",
-          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
-        },{
-          user:{
-            username:"CREATOR_1", 
-            avatar:"http://i0.kym-cdn.com/photos/images/newsfeed/000/869/487/ccf.png"
-          },
-          
-          order:3,
-          created_at:"2018-05-22",
-          text:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nesciunt ipsum, reiciendis quos corrupti ullam, hic maxime, eos fuga tempore tenetur nostrum tempora. Eligendi ducimus laudantium, aliquam dolore quam ipsa!"
-        }]
+        this.http.get("/api/recipe/"+params['recipeid']).toPromise().then(
+          (res)=>{
+            console.log(res.json())
+            this.recipeData=res.json();
+          }
+        ).catch(
+          (res)=>{
+            console.log("HIBA: ",res)
+          }
+        )
       }
     )
   }
@@ -117,6 +59,11 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy(){
     this.activatedRouteSub.unsubscribe();
+  }
+
+  isUserLoggedIn():boolean{
+    let token = localStorage.getItem("token")
+    return token!=null && !this.jwthelper.isTokenExpired(token);
   }
 
   addToShopList(){
@@ -129,7 +76,7 @@ export class RecipeDetailComponent implements OnInit,OnDestroy {
     }
 
     for(let ingredient of this.recipeData.ingredients){  
-
+      console.log(ingredient)
       if(!shopList[ingredient.name]){
         shopList[ingredient.name]={};
         shopList[ingredient.name].quantity=[];

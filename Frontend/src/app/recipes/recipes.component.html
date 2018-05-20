@@ -6,8 +6,8 @@
     <app-fridge></app-fridge>
   </div>
 </div>
-<div class="row mt-2">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let card of dummyCards">
+<div class="row mt-2" *ngIf="cards">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let card of cards">
     <a [routerLink]=card.id><app-recipe-card [card]="card"></app-recipe-card></a>
   </div>
 </div>

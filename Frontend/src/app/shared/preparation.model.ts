@@ -1,4 +1,4 @@
 export interface Preparation {
-  step: number;
-  description: string;
+  stepOrder: number;
+  text: string;
 }

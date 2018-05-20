@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
+import { RecipeCard } from '../shared/recipe-card.model';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-recipes',
@@ -9,13 +11,42 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecipesComponent implements OnInit,OnDestroy{
   private sub:Subscription;
+  private cards:RecipeCard[]=[]
 
-  constructor(private route:ActivatedRoute){}
+  constructor(private route:ActivatedRoute,private http:Http){}
 
   ngOnInit(){
     this.sub = this.route.queryParams.subscribe(
-      (params)=>{
-        console.log("RECIPES params: ",params)
+      (param)=>{
+        this.updateData(param);
+      }
+    )
+    this.updateData({'id':1});
+  }
+
+  updateData(param:any){
+    console.log(param)
+    let endpoint:string = "/api/recipe/";
+    let query:string;
+    if('search' in param){  
+      query="search?search="+param.search;
+    }
+    else if('tag' in param){
+
+      query="tag?tag="+param.tag;
+
+    }else if('id' in param){
+      query="?id="+param.id;
+    }
+    this.http.post("/api/recipe/"+query,null).toPromise().then(
+      (res)=>{
+        this.cards=[]
+        console.log(res.json())
+        this.cards=res.json()
+      }
+    ).catch(
+      (res)=>{
+        this.cards=[]
       }
     )
   }
@@ -30,55 +61,6 @@ export class RecipesComponent implements OnInit,OnDestroy{
       title: 'Ez egy ciEz egy ciEz egy ciEz egy y ciEz egy ciEz egy ciEz egyy ciEz egy ciEz egy ciEz egyy ciEz egy ciEz egy ciEz egyciEz egy ciEz egy ciEz egy cim',
       text: 'Neque porro lor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuelor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuelor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuelor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetue est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
       imgUrl: 'https://i.imgur.com/bE4jFyr.jpg'
-    },
-    {
-      id: 2,
-      title: 'Ez egy másik nagyon gerely cim',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/yDD0LCR.jpg'
-    },
-    {
-      id: 3,
-      title: 'Hova tetted az overálomat?',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/b0awqEb.jpg'
-    },
-    {
-      id: 4,
-      title: 'Ez egy cim',
-      text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-      imgUrl: 'https://i.imgur.com/bE4jFyr.jpg'
-    },
-    {
-      id: 5,
-      title: 'Ez egy másik nagyon gerely cim',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/yDD0LCR.jpg'
-    },
-    {
-      id: 6,
-      title: 'Hova tetted az overálomat?',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/b0awqEb.jpg'
-    },
-    {
-      id: 7,
-      title: 'Ez egy cim',
-      text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-      imgUrl: 'https://i.imgur.com/bE4jFyr.jpg'
-    },
-    {
-      id: 8,
-      title: 'Ez egy másik nagyon gerely cim',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/yDD0LCR.jpg'
-    },
-    {
-      id: 9,
-      title: 'Hova tetted az overálomat?',
-      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLoremLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. Cur ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. CurLorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur non augue et nisi porttitor pretium.',
-      imgUrl: 'https://i.imgur.com/b0awqEb.jpg'
-    }
-  ];
+    }]
   
 }

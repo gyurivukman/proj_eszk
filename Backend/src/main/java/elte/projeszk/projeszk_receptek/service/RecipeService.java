@@ -38,7 +38,7 @@ public class RecipeService {
             float rating = 0;
             if (recipe.getUpvotes() != null && recipe.getDownvotes() != null)
                 rating = recipe.getUpvotes() / (recipe.getUpvotes() + recipe.getDownvotes()) * 10;
-            response.put("raiting", rating);
+            response.put("rating", rating);
         }
         return response;
     }
@@ -50,7 +50,7 @@ public class RecipeService {
             map.put("username", user.getUsername());
             map.put("foreName", user.getForeName());
             map.put("surName", user.getSurName());
-            map.put("email", user.getEmail());
+            return map;
         }
         return null;
     }
@@ -62,8 +62,8 @@ public class RecipeService {
             ingredients.forEach(ingredient -> {
                 Map<String, Object> map = new HashMap<>();
                 map.put("id", ingredient.getId());
-                map.put("ingredient_name", ingredient.getIngredient_name());
-                map.put("value", ingredient.getValue());
+                map.put("name", ingredient.getIngredient_name().getName());
+                map.put("quantity", ingredient.getValue());
                 listOfMap.add(map);
             });
             return listOfMap;
@@ -96,8 +96,10 @@ public class RecipeService {
                 map.put("id", comment.getId());
                 map.put("text", comment.getText());
                 map.put("createdAt", comment.getCreatedAt());
-                if (comment.getUser() != null)
+                if (comment.getUser() != null) {
                     map.put("userId", comment.getUser().getId());
+                    map.put("username", comment.getUser().getUsername());
+                }
                 listOfMap.add(map);
             });
 

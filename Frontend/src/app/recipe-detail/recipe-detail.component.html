@@ -1,6 +1,7 @@
+<ng-container *ngIf="recipeData">
 <div class="row mt-1">
   <div class="col-12 text-center">
-    <h1 class="lemonada recipe-title">{{recipeData.name}}</h1>
+    <h1 class="lemonada recipe-title">{{recipeData.title}}</h1>
     <img src="http://localhost:8080/api/recipe/{{recipeData.id}}/picture" class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
     <div class="text-decoration-container mt-3"><h2 class="roboto">Rating: {{recipeData.rating}}</h2></div>
   </div>
@@ -12,8 +13,8 @@
   <div class="col-6 text-right">
     <ul class="recipe-details-metadata">
       <li class="my-2">
-        <img class="recipe-details-user-avatar mr-3" src={{recipeData.creator.avatar}} alt="user avatar">
-        <span class="font-weight-bold roboto">{{recipeData.creator.username}}</span>
+        <img class="recipe-details-user-avatar mr-3 img img-fluid" src="./assets/person.svg" alt="user avatar">
+        <span class="font-weight-bold roboto">{{recipeData.user.username}}</span>
       </li>
       <li>
         <span class="roboto">{{recipeData.createdAt|date:'yyyy-MM-dd'}}</span>
@@ -46,17 +47,17 @@
         <span>{{ingredient.quantity}}</span>
       </li>
     </ul>
-    <button (click)="addToShopList()" class="w-100 mt-auto btn btn-success">Add to shoplist!</button>
+    <button (click)="addToShopList()" class="w-100 mt-auto btn btn-success" [disabled]="!isUserLoggedIn()">Add to shoplist!</button>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 steps-container">
     <h2 class="text-right roboto font-weight-bold">Steps:</h2>
     <ul>
       <li class="step-item mb-2" *ngFor="let step of recipeData.steps">
         <div class="float-left w-25">
-          <span class="step-number">{{step.step}}</span>
+          <span class="step-number">{{step.stepOrder}}</span>
         </div>
         <div class="text-justify float-right w-75">
-          <p>{{step.description}}</p>
+          <p>{{step.text}}</p>
         </div>
         <div class="clearfix"></div>
       </li>
@@ -69,10 +70,11 @@
     <textarea id="comment-input" class="col-12" [(ngModel)]="userComment" #commentInput>{{userComment}}</textarea>
     <button class="btn btn-success mx-auto" (click)="addComment()" [disabled]="isUserCommentInvalid()">Add comment!</button>
   </div>
-  <ng-container *ngIf="commentData.length>0" >
-    <app-comment *ngFor="let comment of commentData" [data]="comment"></app-comment>
+  <ng-container *ngIf="recipeData.comments && recipeData.comments.length>0" >
+    <app-comment *ngFor="let comment of recipeData.comments" [data]="comment"></app-comment>
   </ng-container>
-  <ng-container *ngIf="commentData.length==0">
+  <ng-container *ngIf="!recipeData.comments || recipeData.comments.length==0">
     <h2>It seems like there aren't any comments here...<small class="text-muted">Maybe you should make some?</small></h2>
   </ng-container>
 </div>
+</ng-container>

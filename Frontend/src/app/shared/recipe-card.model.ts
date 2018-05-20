@@ -1,5 +1,6 @@
 export interface RecipeCard{
-    imgUrl:string;
+    id:number;
     title:string;
-    text:string;
+    description:string;
+    picture:any;
 }

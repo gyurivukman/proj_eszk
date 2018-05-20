@@ -4,8 +4,9 @@
   </div>
   <div class="w-25 d-flex flex-column justify-content-start">
     <span class="mx-auto mb-2"># {{data.order}} </span>
-    <img src={{data.user.avatar}} class="comment-user-avatar mx-auto">
-    <span class="mx-auto">{{data.user.username}}</span>
-    <span class="mx-auto">{{data.creation_time}}</span>
+    <img *ngIf="data.avatar" src={{data.user.avatar}} class="comment-user-avatar mx-auto">
+    <img *ngIf="!data.avatar" src="./assets/person.svg" class="comment-user-avatar mx-auto">
+    <span class="mx-auto">{{data.username}}</span>
+    <span class="mx-auto">{{data.createdAt}}</span>
   </div>
 </div>

@@ -22,7 +22,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getRecipe(@PathVariable Integer id) {
         Map<String, Object> response = recipeService.getRecipe(id);
 

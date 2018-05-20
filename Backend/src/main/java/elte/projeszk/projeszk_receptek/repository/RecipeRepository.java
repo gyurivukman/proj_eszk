@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 
     @Query(
-            value = "SELECT * FROM proj_eszk.recipes WHERE id = (SELECT min(id) FROM proj_eszk.recipes WHERE id >= :param)",
+            value = "SELECT * FROM proj_eszk.recipes WHERE id = (SELECT min(id) FROM proj_eszk.recipes WHERE id > :param)",
             nativeQuery = true
     )
     Optional<Recipe> findByIdNative(@Param("param") Integer id);

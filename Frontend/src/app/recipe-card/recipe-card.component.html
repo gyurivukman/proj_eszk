@@ -1,11 +1,11 @@
 <div class="card">
   <div class="wrapper">
-    <img class="card-img-top img-fluid" [src]="card.imgUrl" alt="alt">
+    <img class="card-img-top img-fluid px-4" src="http://localhost:8080/api/recipe/{{card.id}}/picture" alt="alt">
   </div>
   <div class="card-body">
     <h4>{{card.title}}</h4>
     <div class="card-text">
-      <p>{{card.text}}</p>
+      <p>{{card.description}}</p>
     </div>
   </div>
 </div>
