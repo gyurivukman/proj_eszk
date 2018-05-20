@@ -1,0 +1,40 @@
+.card {
+    height: 100%;
+    -webkit-box-shadow: 6px 7px 14px 0 rgba(51, 50, 50, 0.75);
+    -moz-box-shadow:    6px 7px 14px 0 rgba(51, 50, 50, 0.75);
+    box-shadow:         6px 7px 14px 0 rgba(51, 50, 50, 0.75);
+    border:none;
+}
+
+.story-input{
+    resize:none;
+    height:150px;
+    width:100%;
+    overflow-y:auto;
+}
+
+.ingredient-input{
+    width:40%;
+    max-width:40%;
+}
+.step-input{
+    resize:none;
+    height:150px;
+    width:90%;
+    overflow-y:auto;
+}
+
+.tag{
+    padding:3px;
+    margin:5px;
+    border-radius:3px;
+    color:#FFF;
+
+    text-decoration: none;
+}
+.ready-in-input{
+    width:100px;
+}
+.asd{
+    border:1px solid red;
+}
