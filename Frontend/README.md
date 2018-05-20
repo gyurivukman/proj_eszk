@@ -1,18 +1,18 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4. It is based on Angular2/4 with plain Bootstrap 4.0 for CSS.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Install NodeJS from `http://nodejs.org`. Make sure to include npm in your path variable!
+2. Install angular-cli with the following command: `npm install @angular/cli --save`
+3. Clone this repository
+4. Navigate to `/cloned_repo_location/Frontend/` and issue the following command: `npm install`. This will install all the dependencies and as such, it might take some time.
+5. Run `npm start` for the local dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 

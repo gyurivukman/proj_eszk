@@ -19,6 +19,9 @@ import { CommentComponent } from './recipe-detail/comment/comment.component';
 import { AuthModule } from './auth.module';
 import { LoginService } from './login/login.service';
 import { SignupService } from './signup/signup.service';
+import { KeysPipe } from './shared/keypipe.pipe';
+import { AccountComponent } from './account/account.component';
+import { MyrecipesComponent } from './myrecipes/myrecipes.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { SignupService } from './signup/signup.service';
     FridgeComponent,
     RecipesComponent,
     CommentComponent,
+    KeysPipe,
+    AccountComponent,
+    MyrecipesComponent
   ],
   imports: [
     BrowserModule,

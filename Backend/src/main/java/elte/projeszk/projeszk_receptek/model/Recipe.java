@@ -12,6 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedNativeQuery(name = "Recipe.findByIdNative",
+        query="SELECT * FROM proj_eszk.recipes WHERE id = (SELECT min(id) FROM proj_eszk.recipes WHERE id >= :param)",
+        resultClass = Recipe.class)
 @Table(name = "recipes")
 @Data
 @AllArgsConstructor
@@ -32,10 +35,6 @@ public class Recipe extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @Min(1)@Max(5)
-    @Column(nullable=false)
-    private int rating=5;
-
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name="user_id", referencedColumnName="id")
     private User user;
@@ -50,9 +49,14 @@ public class Recipe extends BaseEntity {
     private List<Comment> comments;
 
     @Column(nullable=true)
-    private int upvotes;
+    private Integer upvotes;
 
     @Column(nullable=true)
-    private int downvotes;
+    private Integer downvotes;
 
+    @ManyToMany
+    @JoinTable(name="recipes_tags",
+            joinColumns=@JoinColumn(name="tag_id"),
+            inverseJoinColumns=@JoinColumn(name="recipe_id"))
+    private List<Tag> tags;
 }

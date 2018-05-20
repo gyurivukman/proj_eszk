@@ -20,20 +20,11 @@ export class SignupComponent implements OnInit {
   attemptSignup(formGroup:FormGroup){
     this.signupservice.attemptSignup(formGroup.value).then(
       (res)=>{
-        console.log("OK")
-        console.log(res)
         this.closeSignup.nativeElement.click();
       }
     ).catch(
       (res)=>{
-        console.log("elbaszódott")
-        console.log(res.json())
-        let errors = res.json()
-        for(let key in this.errors){
-          if(errors.hasOwnProperty(key)){
-            this.errors[key]=errors[key];
-          }
-        }
+        this.errors=res.json()
       }
     )
   }

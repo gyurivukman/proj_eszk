@@ -1,7 +1,7 @@
 <div class="row mt-1">
   <div class="col-12 text-center">
     <h1 class="lemonada recipe-title">{{recipeData.name}}</h1>
-    <img src={{recipeData.imgPath}} class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
+    <img src="http://localhost:8080/api/recipe/{{recipeData.id}}/picture" class="w-75 recipe-details-image-rounded" alt="user image of the recipe">
     <div class="text-decoration-container mt-3"><h2 class="roboto">Rating: {{recipeData.rating}}</h2></div>
   </div>
 </div>
@@ -42,17 +42,18 @@
     <h2 class="roboto font-weight-bold">Ingredients:</h2>
     <ul>
       <li class="ingredient-item mb-2" *ngFor="let ingredient of recipeData.ingredients">
-        <span>{{ingredient.name}}</span>
+        <span>{{ingredient.name}} - </span>
         <span>{{ingredient.quantity}}</span>
       </li>
     </ul>
+    <button (click)="addToShopList()" class="w-100 mt-auto btn btn-success">Add to shoplist!</button>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 steps-container">
     <h2 class="text-right roboto font-weight-bold">Steps:</h2>
     <ul>
       <li class="step-item mb-2" *ngFor="let step of recipeData.steps">
         <div class="float-left w-25">
-            <span class="step-number">{{step.step}}</span>
+          <span class="step-number">{{step.step}}</span>
         </div>
         <div class="text-justify float-right w-75">
           <p>{{step.description}}</p>
@@ -68,5 +69,10 @@
     <textarea id="comment-input" class="col-12" [(ngModel)]="userComment" #commentInput>{{userComment}}</textarea>
     <button class="btn btn-success mx-auto" (click)="addComment()" [disabled]="isUserCommentInvalid()">Add comment!</button>
   </div>
-  <app-comment *ngFor="let comment of commentData" [data]="comment"></app-comment>
+  <ng-container *ngIf="commentData.length>0" >
+    <app-comment *ngFor="let comment of commentData" [data]="comment"></app-comment>
+  </ng-container>
+  <ng-container *ngIf="commentData.length==0">
+    <h2>It seems like there aren't any comments here...<small class="text-muted">Maybe you should make some?</small></h2>
+  </ng-container>
 </div>

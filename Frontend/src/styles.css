@@ -11,7 +11,7 @@ html,body {
     max-height:100%;
 }
 
-.form-control:focus.form-control-sm:focus{
+.form-control:focus{
     border-color: #32CD32;
     box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.0), 0 0 8px #32CD32;
 }
