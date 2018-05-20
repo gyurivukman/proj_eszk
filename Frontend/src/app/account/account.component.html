@@ -1,3 +1,34 @@
-<p>
-  account works!
-</p>
+<div class="row mt-2" *ngIf="data">
+    <div class="col-lg-2 col-md-4 col-sm 12 col-xs-12 text-center">
+      <img class="img img-fluid avatar" src="https://orig00.deviantart.net/c6aa/f/2014/303/5/d/awesome_face_by_zorogleb-d84ne3x.jpg" alt="user-profile">
+      <span>{{data.username}}</span>
+      <img class="float-right" src="./assets/cog.svg" alt="options">
+    </div>
+    <div class="col-lg-10 col-md-8 col-sm 12 col-xs-12 text-center">
+      <h1>{{data.first_name}} {{data.second_name}}</h1>
+      <h3 class="text-muted">{{data.email}}</h3>
+      <span>Recipes: {{data.recipeCount}}</span>
+      <br/>
+      <span>Comments: {{data.commentCount}}</span>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 justify-content-center">
+      <form #passwordForm="ngForm" (ngSubmit)="changePassword(passwordForm.form)" class="d-flex flex-column">
+          <div class="form-group w-50 mx-auto">
+            <span>Old password </span>
+            <input type="password" class="ml-auto mt-2 form-control-sm w-100" id="accountOldPassword" name="accountOldPassword" ngModel>
+            <span>New password </span>
+            <input type="password" class="ml-auto mt-2 form-control-sm w-100" id="accountNewPassword" name="accountNewPassword" ngModel>
+          </div>
+          <button type="submit" class="d-block btn btn-success btn-sm w-50 mt-auto mx-auto">Save</button>
+      </form>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 justify-content-center">
+      <form #emailForm="ngForm" (ngSubmit)="changeEmail(emailForm.form)" class="d-flex flex-column text-center">
+          <div class="form-group w-50 mx-auto">
+            <span>New email</span>
+            <input type="email" class="ml-auto mt-2 form-control-sm w-100" id="accountnewEmail" name="accountNewEmail" ngModel>
+          </div>
+          <button type="submit" class="d-block btn btn-success btn-sm w-50 mt-auto mx-auto">Save</button>
+      </form>
+    </div>
+</div>
