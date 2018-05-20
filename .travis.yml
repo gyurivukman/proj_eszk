@@ -25,14 +25,15 @@ matrix:
         - 'node'
 
       addons:
-      apt:
-        sources:
-          - google-chrome
-          - mysql-5.7-trusty
-        packages:
-        - google-chrome-stable
-        - google-chrome-beta
-        - mysql-server
+        apt:
+          sources:
+            - google-chrome
+            - mysql-5.7-trusty
+          packages:
+            - google-chrome-stable
+            - google-chrome-beta
+            - mysql-server
+            - mysql-client
 
       before_install:
         - export CHROME_BIN=chromium-browser
