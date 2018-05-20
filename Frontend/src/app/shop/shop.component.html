@@ -1,4 +1,25 @@
-<p>
-  shop works!
-</p>
-
+<div class="row mt-1">
+  <h2 class="mt-2 text-muted" *ngIf="!shopList">You don't seem to have a shopping list yet! Add some ingredients from the various recipes on the site!</h2>
+  <ng-container *ngIf="shopList">
+    <ng-container *ngFor="let ingredient of shopList | keys">
+      <div *ngIf="shopList[ingredient].quantity.length>0" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shoplist-ingredient-outer-container">
+        <div class="shoplist-ingredient-inner-container" [ngStyle]='{"background-color":shopList[ingredient].color}'>
+          <div class="w-100 text-center">
+            <span class="ingredient-title">{{ingredient}}</span>
+            <button (click)="removeIngredientCategory(ingredient)" type="button" class="close mr-1 remove-quantity-button" aria-label="remove-item-from-quantity-list">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <ul class="mt-1 ingredient-quantity-list">
+            <li *ngFor="let quantity of shopList[ingredient].quantity;let i=index">
+              <span>{{quantity}}</span>
+              <button (click)="removeIngredientQuantity(ingredient, i)" type="button" class="close mr-1 remove-quantity-button" aria-label="remove-item-from-quantity-list">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

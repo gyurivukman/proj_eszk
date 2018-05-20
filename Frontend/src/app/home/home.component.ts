@@ -20,5 +20,7 @@ export class HomeComponent implements OnInit {
 
   logout(){
     localStorage.removeItem("token");
+    sessionStorage.removeItem("shopList");
+    this.router.navigate(['/recipes'])
   }
 }

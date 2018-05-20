@@ -1,3 +1,19 @@
-.asd{
-    border:1px solid red;
+.shoplist-ingredient-outer-container{
+    padding:10px;
+}
+
+.shoplist-ingredient-inner-container{
+    border-radius:6px;
+}
+
+.ingredient-title{
+    border-bottom:1px inset grey;
+}
+
+.ingredient-quantity-list{
+    list-style-type: square;
+}
+
+.remove-quantity-button{
+    color:black;
 }

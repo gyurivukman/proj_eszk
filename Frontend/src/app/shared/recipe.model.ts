@@ -6,7 +6,6 @@ export interface Recipe {
   id:number;
   name:string;
   description:string;
-  imgPath?:string; //string for now,bytearray otherwise.
   ingredients: Ingredient[];
   steps:Preparation[];
   rating:number;
