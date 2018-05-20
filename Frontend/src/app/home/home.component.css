@@ -25,7 +25,7 @@
 
 .lemonada{
     font-family: 'Lemonada', sans-serif;
-    font-size: 1.3em;
+    font-size: 1.2em;
     color:#FFF;
     margin-left:20px;
     -webkit-text-stroke: 0.5px black;
@@ -37,4 +37,10 @@
     background-color: transparent !important;
     -webkit-text-decoration-skip: objects !important;
     cursor: pointer;
+}
+
+.searchInput{
+    box-sizing: border-box;
+    float:left;
+    width:40%;
 }

@@ -10,6 +10,7 @@ import { RecipesComponent } from '../recipes/recipes.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  searchInput:string;
   constructor(private router:Router,private jwthelper:JwtHelper) {}
 
   ngOnInit() {}
@@ -30,4 +31,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['recipes'], { queryParams: {tag:param}})
   }
 
+  search(){
+    this.router.navigate(['recipes'],{queryParams:{search:this.searchInput}})
+  }
 }
